@@ -1,0 +1,50 @@
+***We can re-arrange this list according to shifting priorities at any point; this is [initially] just a list of to-do's
+
+Homepage
+  button to change password / security questions screen
+  button to phone screen
+
+Phone Screen
+  return button to homescreen
+  working dial pad
+  access ability to make calls
+  forward received calls to voicemail
+
+Database
+  store 6 pre-made questions
+  space to store 3 pre-made questions (no repeats)
+  space to store 3 15 char max answers
+  space to store 4 digit passcode
+  
+Passcode Screen
+  display current pass code
+  digit box for new pass code
+  current questions & answers with option to change
+
+Homepage
+  if password is not set, route to set passcode and security questions
+  else stay on current home screen and display current password
+
+Passcode pop-up when leaving phone screen
+
+If passcode fails 3 times, pop-up random selected security question
+  3 wrong answers tells to shut down phone
+
+Override phone screen's ability to tap out of app
+
+
+
+  
+  
+  
+  
+  Design
+    buttons to swipes
+    fonts/colors
+    logo
+    background images
+    
+    
+    
+Completed: 
+    
