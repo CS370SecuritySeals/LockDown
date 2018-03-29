@@ -9,6 +9,11 @@ Phone Screen
   working dial pad
   access ability to make calls
   forward received calls to voicemail
+  
+Change Password View
+  return button to homescreen
+  working ability to update password
+  working ability to set security questions
 
 Database
   store 6 pre-made questions
