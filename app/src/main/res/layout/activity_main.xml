@@ -26,27 +26,36 @@
         android:id="@+id/ChangePasscode"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="178dp"
         android:fontFamily="monospace"
         android:text="@string/changePasscode"
         android:textAlignment="center"
         android:textColor="@color/colorFont"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="70dp"
-        tools:layout_editor_absoluteY="197dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.285"
+        />
 
     <Button
         android:id="@+id/enterLockDown"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="136dp"
         android:fontFamily="monospace"
         android:text="@string/enterLockDown"
         android:textAlignment="center"
         android:textColor="@color/colorFont"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="78dp"
-        tools:layout_editor_absoluteY="476dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.864" />
 
     <TextView
         android:id="@+id/PasscodeDisplay"
@@ -59,8 +68,12 @@
         android:textColor="@color/colorAccentPurple"
         android:textSize="42sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="128dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.204" />
 
 </android.support.constraint.ConstraintLayout>
     <!--android:fontFamily="@font/advent_pro_thin"-->
