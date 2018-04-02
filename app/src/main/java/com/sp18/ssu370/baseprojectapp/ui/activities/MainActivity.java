@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivities(new Intent(MainActivity.this, ChangePasswordScreen.class));
+
             }
         });
     }

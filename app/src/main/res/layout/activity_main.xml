@@ -32,6 +32,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorFont"
         android:textSize="24sp"
+        android:onClick="@string/app_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintLeft_toLeftOf="parent"
