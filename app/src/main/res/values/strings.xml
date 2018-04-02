@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">BaseProjectApp</string>
-    <string name="passcode_label">Current Passcode:</string> // K
-    <string name="answer_label">A:</string> // K
-    <string name="question_label">Q:</string> // K
-    <string name="answer_limitation">Answers must be 5-15 characters...</string> // K
-    <string name="change_question">Change question...</string> // K
+    <string name="app_name">Lock Down</string>
+    <string name="passcodeHeader">Your Passcode</string>
+    <string name="tempPasscode">7263</string>
+    <string name="changePasscode">&#171; Change Passcode</string>
+    <string name="enterLockDown">Enter LockDown &#187;</string>
 </resources>
