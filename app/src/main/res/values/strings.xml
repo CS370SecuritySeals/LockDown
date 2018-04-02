@@ -4,4 +4,6 @@
     <string name="tempPasscode">7263</string>
     <string name="changePasscode">&#171; Change Passcode</string>
     <string name="enterLockDown">Enter LockDown &#187;</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_change_password_screen">ChangePasswordScreen</string>
 </resources>

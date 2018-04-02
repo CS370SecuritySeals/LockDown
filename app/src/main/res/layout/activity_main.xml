@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/HomeScreen"
+    android:background="@drawable/home_screen"
     tools:context="com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity">
 
     <TextView
@@ -52,14 +52,15 @@
         android:id="@+id/PasscodeDisplay"
         android:layout_width="139dp"
         android:layout_height="47dp"
-        android:fontFamily="@font/advent_pro_thin"
+        android:fontFamily="sans-serif"
         android:letterSpacing="3.4"
         android:text="@string/tempPasscode"
         android:textAlignment="center"
-        android:textColor="@color/accentPurple"
+        android:textColor="@color/colorAccentPurple"
         android:textSize="42sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="136dp"
         tools:layout_editor_absoluteY="128dp" />
 
 </android.support.constraint.ConstraintLayout>
+    <!--android:fontFamily="@font/advent_pro_thin"-->

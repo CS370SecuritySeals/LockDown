@@ -3,7 +3,7 @@
     <color name="colorBackground">#2C333D</color>
     <color name="colorFont">#ffffff</color>
     <color name="colorSubheading">#666666</color>
-    <color name="accentTeal">#60e0b5</color>
-    <color name="accentPurple">#a37eed</color>
+    <color name="colorAccentTeal">#60e0b5</color>
+    <color name="colorAccentPurple">#a37eed</color>
 
 </resources>
