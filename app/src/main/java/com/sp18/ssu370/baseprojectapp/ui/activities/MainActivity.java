@@ -12,8 +12,6 @@ import com.sp18.ssu370.baseprojectapp.R;
 
 public class MainActivity extends AppCompatActivity {
     private Button changePCButton;
-    private TextView PCButtonText;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
