@@ -13,6 +13,7 @@ import com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity;
 
 public class ChangePasswordScreen extends AppCompatActivity {
     private Button returnHomeButton;
+    private Button tempSettingsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,15 @@ public class ChangePasswordScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ChangePasswordScreen.this, MainActivity.class));
+            }
+        });
+
+
+        tempSettingsButton = (Button) findViewById(R.id.settings);
+        tempSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ChangePasswordScreen.this, SettingsActivity.class));
             }
         });
 
