@@ -8,10 +8,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.sp18.ssu370.baseprojectapp.ChangePasswordScreen;
+import com.sp18.ssu370.baseprojectapp.ExitLockdownActivity;
 import com.sp18.ssu370.baseprojectapp.R;
 
 public class MainActivity extends AppCompatActivity {
     private Button changePCButton;
+    private Button exitLockDownButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ChangePasswordScreen.class));
             }
+        });
+
+        exitLockDownButton = (Button) findViewById(R.id.exit_lockdown_button);
+
+        exitLockDownButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ExitLockdownActivity.class));
+            }
+
         });
 
     }
