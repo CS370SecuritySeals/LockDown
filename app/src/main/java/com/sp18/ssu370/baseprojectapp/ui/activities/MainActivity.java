@@ -14,22 +14,19 @@ public class MainActivity extends AppCompatActivity {
     private Button changePCButton;
     private TextView PCButtonText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        changePCButton = (Button)findViewById(R.id.change_pc_button);
+        changePCButton = (Button) findViewById(R.id.change_pc_button);
 
         changePCButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivities(new Intent(MainActivity.this, ChangePasswordScreen.class));
-
+                startActivity(new Intent(MainActivity.this, ChangePasswordScreen.class));
             }
         });
-    }
 
-    private void startActivities(Intent intent) {
     }
-
 }

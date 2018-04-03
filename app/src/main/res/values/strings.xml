@@ -10,6 +10,7 @@
     <string name="InputNewCode">Input New Passcode</string>
     <string name="SelectAnswer">Select 3 of the following for your security questions</string>
     <string name="ReturnHome">Return Home &#187;</string>
+    <string name="Select_Questions">Select 6 of the Following Questions:</string>
 
     <string-array name="security_array">
         <item>Question 1</item>
