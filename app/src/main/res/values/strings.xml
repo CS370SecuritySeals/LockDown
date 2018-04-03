@@ -13,6 +13,7 @@
     <string name="Select_Questions">Select 6 of the Following Questions:</string>
     <string name="tempSettingsButton">&#171; Go To Question Selection</string>
     <string name="exitlockdown">Exit LockDown &#187;</string>
+    <string name="enterMaps">Enter Google Maps &#187;</string>
 
     <string-array name="security_array">
         <item>Question 1</item>
