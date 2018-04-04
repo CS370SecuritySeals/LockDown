@@ -55,7 +55,8 @@
             android:label="@string/title_activity_settings" />
         <activity
             android:name=".ExitLockdownActivity"
-            android:label="@string/title_activity_exit_lockdown"></activity>
+            android:label="@string/title_activity_exit_lockdown" />
+        <activity android:name=".PhoneActivity"></activity>
     </application>
 
 </manifest>

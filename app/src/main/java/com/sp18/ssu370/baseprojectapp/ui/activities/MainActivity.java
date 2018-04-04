@@ -10,12 +10,13 @@ import android.widget.TextView;
 import com.sp18.ssu370.baseprojectapp.ChangePasswordScreen;
 import com.sp18.ssu370.baseprojectapp.ExitLockdownActivity;
 import com.sp18.ssu370.baseprojectapp.MapsActivity;
+import com.sp18.ssu370.baseprojectapp.PhoneActivity;
 import com.sp18.ssu370.baseprojectapp.R;
 
 public class MainActivity extends AppCompatActivity {
     private Button changePCButton;
-    private Button exitLockDownButton;
     private Button enterMapsButton;
+    private Button enterLockDownButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +31,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        exitLockDownButton = (Button) findViewById(R.id.exit_lockdown_button);
-
-        exitLockDownButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ExitLockdownActivity.class));
-            }
-
-        });
 
         enterMapsButton = (Button) findViewById(R.id.enter_maps_button);
 
@@ -47,6 +39,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, MapsActivity.class));
 
+            }
+        });
+
+        enterLockDownButton = (Button) findViewById(R.id.enterLockDown);
+
+        enterLockDownButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, PhoneActivity.class));
             }
         });
 
