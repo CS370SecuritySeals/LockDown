@@ -11,7 +11,7 @@
     <string name="SelectAnswer">Select 3 of the following for your security questions</string>
     <string name="ReturnHome">Return Home &#187;</string>
     <string name="Select_Questions">Select 6 of the Following Questions:</string>
-    <string name="tempSettingsButton">&#171; Go To Question Selection</string>
+    <string name="tempSettingsButton">&#171; Edit security questions</string>
     <string name="exitlockdown">&#171; Exit LockDown</string>
     <string name="enterMaps">Enter Google Maps &#187;</string>
 
@@ -24,7 +24,7 @@
         <item>Question 6</item>
         <item>Question 7</item>
     </string-array>
-    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_settings">Return to change passcode</string>
 
     <!-- Strings related to Settings -->
 
