@@ -18,17 +18,22 @@ import com.sp18.ssu370.baseprojectapp.MapsActivity;
 import com.sp18.ssu370.baseprojectapp.PhoneActivity;
 import com.sp18.ssu370.baseprojectapp.R;
 
+import sqlite.DatabaseHelper;
+import sqlite.model.Passcodes;
+
 public class MainActivity extends AppCompatActivity {
     private Button changePCButton;
     private Button enterMapsButton;
     private Button enterLockDownButton;
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         changePCButton = (Button) findViewById(R.id.change_pc_button);
-
+        db = new DatabaseHelper(this);
+        
         changePCButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
