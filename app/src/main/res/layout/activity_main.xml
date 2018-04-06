@@ -79,7 +79,7 @@
         android:layout_height="47dp"
         android:fontFamily="sans-serif"
         android:letterSpacing=".5"
-        android:text="@string/tempPasscode"
+        android:text="@string/Passcode"
         android:textAlignment="center"
         android:textColor="@color/colorAccentPurple"
         android:textSize="42sp"
