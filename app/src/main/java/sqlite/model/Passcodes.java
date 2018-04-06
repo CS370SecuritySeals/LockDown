@@ -2,7 +2,7 @@
 package sqlite.model;
 
 public class Passcodes {
-    public static final String TABLE_NAME = "pascodes";
+    public static final String TABLE_NAME = "passcodes";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_QUESTION = "question";
     public static final String COLUMN_ANSWER = "answer";
@@ -17,7 +17,7 @@ public class Passcodes {
 
     // Create table SQL query
     public static final String CREATE_TABLE =
-            "CREATE TABLE IF NOT EXISTS" + TABLE_NAME + "("
+            "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
                     + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + COLUMN_QUESTION + " TEXT,"
                     + COLUMN_ANSWER + " TEXT,"
