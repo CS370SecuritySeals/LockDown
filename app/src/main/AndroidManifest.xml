@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -59,6 +61,11 @@
             android:name=".ExitLockdownActivity"
             android:label="@string/title_activity_exit_lockdown" />
         <activity android:name=".PhoneActivity"></activity>
+
+        <activity
+            android:name=".UpdatePasscodeActivity"
+            android:label="@string/title_activity_exit_lockdown" />
+
     </application>
 
 </manifest>
