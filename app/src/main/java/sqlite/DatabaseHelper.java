@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import sqlite.model.Passcodes;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     // Database Version (may not be necessary)
@@ -29,17 +30,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // create passcodes table
         try {
                 db.execSQL(Passcodes.CREATE_TABLE);
-                addRows();
         }
         catch (Exception e) {
-            System.out.println("Error: " + e);
+            System.out.println("Database Creation Error: " + e);
+        }
+        try {
+            addRows(db);
+        }
+        catch (Exception e) {
+            System.out.println("Addrows in OnCreate Error: " + e);
         }
     }
 
-    public void addRows(){
-        // get writable database as we want to write data
-        SQLiteDatabase db = this.getWritableDatabase();
-
+    public void addRows(SQLiteDatabase db){
         // populate it with initial 6 security questions
         ContentValues values1 = new ContentValues();
         ContentValues values2 = new ContentValues();
@@ -65,7 +68,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // insert rows
         try{
-            db.insert(Passcodes.TABLE_NAME, null, values1);
+            Log.d("Addrows", "Added row:" + db.insert(Passcodes.TABLE_NAME, null, values1));
             db.insert(Passcodes.TABLE_NAME, null, values2);
             db.insert(Passcodes.TABLE_NAME, null, values3);
             db.insert(Passcodes.TABLE_NAME, null, values4);

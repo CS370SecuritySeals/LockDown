@@ -18,6 +18,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -77,8 +78,8 @@ public class UpdatePasscodeActivity extends AppCompatActivity implements LoaderC
             @Override
             public void onClick(View mEmailView) {
                 resetPasscode();
-                final TextView P = (TextView) findViewById(R.id.PasscodeDisplay);
                 System.out.println(db.getPasscode());
+                final TextView P = (TextView) findViewById(R.id.PasscodeDisplay);
                 P.setText("" + db.getPasscode());
                 changeActivity();
             }
@@ -92,7 +93,8 @@ public class UpdatePasscodeActivity extends AppCompatActivity implements LoaderC
         int temp = Integer.parseInt(password);
 
         if(mEmailView.getText().toString().length() == 4){
-            db.change_passcode(db.getWritableDatabase(), temp);
+            int rowsAffected = db.change_passcode(db.getWritableDatabase(), temp);
+            Log.d("UPDATE_PASSCODE", "resetPasscode: " + rowsAffected + "rows changed");
         }
     }
 
