@@ -17,6 +17,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Database Name
     private static final String DATABASE_NAME = "passcodes_db";
 
+    private SQLiteDatabase mDefaultWritableDatabase = null;
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -26,15 +28,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // create passcodes table
         try {
-            db.execSQL(Passcodes.CREATE_TABLE);
+                db.execSQL(Passcodes.CREATE_TABLE);
+                addRows();
         }
         catch (Exception e) {
             System.out.println("Error: " + e);
         }
+    }
 
+    public void addRows(){
         // get writable database as we want to write data
-        //SQLiteDatabase db =
-        this.getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
 
         // populate it with initial 6 security questions
         ContentValues values1 = new ContentValues();
@@ -77,10 +81,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
+        this.mDefaultWritableDatabase = db;
         db.execSQL("DROP TABLE IF EXISTS " + Passcodes.TABLE_NAME);
 
         // Create tables again
         onCreate(db);
+    }
+
+    @Override
+    public SQLiteDatabase getWritableDatabase() {
+        final SQLiteDatabase db;
+        if(mDefaultWritableDatabase != null){
+            db = mDefaultWritableDatabase;
+        } else {
+            db = super.getWritableDatabase();
+        }
+        return db;
     }
 
     // RETURNS PASSCODE OBJECT WITHOUT PASSCODE COLUMN
@@ -198,8 +214,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // passcode setter
-    public int change_passcode(int entry){
-        // get readable database as we are not inserting anything
+    public int change_passcode(SQLiteDatabase temp, int entry){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();

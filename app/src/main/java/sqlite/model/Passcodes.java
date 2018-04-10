@@ -17,11 +17,11 @@ public class Passcodes {
 
     // Create table SQL query
     public static final String CREATE_TABLE =
-            "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
-                    + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + COLUMN_QUESTION + " TEXT,"
-                    + COLUMN_ANSWER + " TEXT,"
-                    + COLUMN_IS_SELECTED + " BOOLEAN,"
+            "CREATE TABLE " + TABLE_NAME + "("
+                    + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + COLUMN_QUESTION + " TEXT, "
+                    + COLUMN_ANSWER + " TEXT, "
+                    + COLUMN_IS_SELECTED + " BOOLEAN, "
                     + COLUMN_PASSCODE + " INTEGER"
                     + ")";
 

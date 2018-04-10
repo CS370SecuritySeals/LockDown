@@ -25,14 +25,12 @@ public class MainActivity extends AppCompatActivity {
     private Button changePCButton;
     private Button enterMapsButton;
     private Button enterLockDownButton;
-    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         changePCButton = (Button) findViewById(R.id.change_pc_button);
-        db = new DatabaseHelper(this);
         
         changePCButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -69,6 +69,7 @@ public class UpdatePasscodeActivity extends AppCompatActivity implements LoaderC
         mEmailView = (AutoCompleteTextView) findViewById(R.id.code);
         Passcode = (TextView) findViewById(R.id.PasscodeDisplay);
         db = new DatabaseHelper(this);
+        db.getWritableDatabase();
         populateAutoComplete();
 
         resetButton = (Button) findViewById(R.id.reset_button);
@@ -76,6 +77,10 @@ public class UpdatePasscodeActivity extends AppCompatActivity implements LoaderC
             @Override
             public void onClick(View mEmailView) {
                 resetPasscode();
+                final TextView P = (TextView) findViewById(R.id.PasscodeDisplay);
+                System.out.println(db.getPasscode());
+                P.setText("" + db.getPasscode());
+                changeActivity();
             }
         });
 
@@ -84,12 +89,15 @@ public class UpdatePasscodeActivity extends AppCompatActivity implements LoaderC
 
     private void resetPasscode(){
         String password = mEmailView.getText().toString();
+        int temp = Integer.parseInt(password);
 
         if(mEmailView.getText().toString().length() == 4){
-            db.change_passcode(Integer.parseInt(password));
-            Passcode.setText(db.getPasscode());
-            startActivity(new Intent(UpdatePasscodeActivity.this, MainActivity.class));
+            db.change_passcode(db.getWritableDatabase(), temp);
         }
+    }
+
+    private void changeActivity(){
+        startActivity(new Intent(UpdatePasscodeActivity.this, MainActivity.class));
     }
 
     private void populateAutoComplete() {
