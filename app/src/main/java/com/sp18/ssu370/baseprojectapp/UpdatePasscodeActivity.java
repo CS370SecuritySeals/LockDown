@@ -71,31 +71,36 @@ public class UpdatePasscodeActivity extends AppCompatActivity implements LoaderC
         Passcode = (TextView) findViewById(R.id.PasscodeDisplay);
         db = new DatabaseHelper(this);
         db.getWritableDatabase();
-        populateAutoComplete();
+        //populateAutoComplete();
 
         resetButton = (Button) findViewById(R.id.reset_button);
         resetButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View mEmailView) {
-                resetPasscode();
-                System.out.println(db.getPasscode());
-                final TextView P = (TextView) findViewById(R.id.PasscodeDisplay);
-                P.setText("" + db.getPasscode());
-                changeActivity();
+                if(resetPasscode()) {
+                    System.out.println(db.getPasscode());
+                    final TextView P = (TextView) findViewById(R.id.PasscodeDisplay);
+                    P.setText("" + db.getPasscode());
+                    changeActivity();
+                }
             }
         });
 
         mLoginFormView = findViewById(R.id.login_form);
     }
 
-    private void resetPasscode(){
+    private boolean resetPasscode(){
         String password = mEmailView.getText().toString();
-        int temp = Integer.parseInt(password);
+        if(password.length() == 4) {
+            int temp = Integer.parseInt(password);
 
-        if(mEmailView.getText().toString().length() == 4){
-            int rowsAffected = db.change_passcode(db.getWritableDatabase(), temp);
-            Log.d("UPDATE_PASSCODE", "resetPasscode: " + rowsAffected + "rows changed");
+            if (mEmailView.getText().toString().length() == 4) {
+                int rowsAffected = db.change_passcode(db.getWritableDatabase(), temp);
+                Log.d("UPDATE_PASSCODE", "resetPasscode: " + rowsAffected + "rows changed");
+            }
+            return true;
         }
+        return false;
     }
 
     private void changeActivity(){
