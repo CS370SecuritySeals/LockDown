@@ -4,4 +4,13 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="exitLockdown_vertical_margin">130dp</dimen>
+    <dimen name="activity_margin">16dp</dimen>
+    <dimen name="dot_margin_right">10dp</dimen>
+    <dimen name="dimen_10">10dp</dimen>
+    <dimen name="input">20sp</dimen>
+    <dimen name="dot_height">30dp</dimen>
+    <dimen name="dot_text_size">40sp</dimen>
+    <dimen name="question">14sp</dimen>
+    <dimen name="answer">18sp</dimen>
+    <dimen name="passcode">24sp</dimen>
 </resources>

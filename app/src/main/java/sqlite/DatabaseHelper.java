@@ -253,4 +253,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.update(Passcodes.TABLE_NAME, values, Passcodes.COLUMN_ID + " = ?",
                 new String[]{String.valueOf(questionId)});
     }
+
+    public List<Passcodes> getAll() {
+        List<Passcodes> passcodes = new ArrayList<>();
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + Passcodes.TABLE_NAME + " ORDER BY " +
+                Passcodes.COLUMN_ID + " ASC";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Passcodes passcode = new Passcodes();
+                passcode.setId(cursor.getInt(cursor.getColumnIndex(Passcodes.COLUMN_ID)));
+                passcode.setAnswer(cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_ANSWER)));
+                passcode.setQuestion(cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_QUESTION)));
+
+                passcodes.add(passcode);
+            } while (cursor.moveToNext());
+        }
+
+        // close db connection
+        db.close();
+
+        // return notes list
+        return passcodes;
+    }
 }
+

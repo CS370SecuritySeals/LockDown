@@ -1,4 +1,6 @@
 package com.sp18.ssu370.baseprojectapp;
+import com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity;
+import sqlite.DatabaseHelper;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity;
-import sqlite.DatabaseHelper;
+import com.sp18.ssu370.baseprojectapp.R;
 
 public class ChangePasswordScreen extends AppCompatActivity {
     private Button returnHomeButton;
@@ -49,9 +49,8 @@ public class ChangePasswordScreen extends AppCompatActivity {
         tempSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ChangePasswordScreen.this, SettingsActivity.class));
+                startActivity(new Intent(ChangePasswordScreen.this, QuestionActivity.class));
             }
         });
-
     }
 }

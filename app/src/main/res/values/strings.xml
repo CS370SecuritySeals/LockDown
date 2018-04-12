@@ -16,6 +16,10 @@
     <string name="tempSettingsButton">&#171; Edit security questions</string>
     <string name="exitlockdown">&#171; Exit LockDown</string>
     <string name="enterMaps">Enter Google Maps &#187;</string>
+    <string name="edit">Edit</string>
+    <string name="question">Q</string>
+    <string name="test">test</string>
+    <string name="title_activity_edit_questions">Edit Questions</string>
 
     <string-array name="security_array">
         <item>Question 1</item>

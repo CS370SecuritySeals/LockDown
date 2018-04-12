@@ -60,11 +60,15 @@
         <activity
             android:name=".ExitLockdownActivity"
             android:label="@string/title_activity_exit_lockdown" />
-        <activity android:name=".PhoneActivity"></activity>
+        <activity android:name=".PhoneActivity"/>
 
         <activity
             android:name=".UpdatePasscodeActivity"
             android:label="@string/title_activity_exit_lockdown" />
+        <activity
+            android:name=".QuestionActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/title_activity_edit_questions" />
 
     </application>
 
