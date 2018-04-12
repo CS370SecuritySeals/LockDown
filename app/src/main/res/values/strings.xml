@@ -2,6 +2,7 @@
     <string name="app_name">Lock Down</string>
     <string name="passcodeHeader">Your Passcode</string>
     <string name="Passcode">****</string>
+    <string name="PasscodeUpdate">****</string>
     <string name="changePasscode">&#171; Change Passcode</string>
     <string name="reset">&#171; Reset</string>
     <string name="enterLockDown">Enter LockDown &#187;</string>
