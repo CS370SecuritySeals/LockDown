@@ -66,7 +66,6 @@ public class UpdatePasscodeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.update_password);
 
-
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.code);
         Passcode = (TextView) findViewById(R.id.PasscodeDisplayUpdate);
@@ -81,7 +80,7 @@ public class UpdatePasscodeActivity extends AppCompatActivity {
                 if(resetPasscode()) {
                     System.out.println(db.getPasscode());
                     //final TextView P = (TextView) findViewById(R.id.PasscodeDisplay);
-                    String temp = Integer.toString(db.getPasscode());
+                    String temp = db.getPasscode();
                     Passcode.setText(temp);
                     changeActivity();
                 }
@@ -94,12 +93,8 @@ public class UpdatePasscodeActivity extends AppCompatActivity {
     private boolean resetPasscode(){
         String password = mEmailView.getText().toString();
         if(password.length() == 4) {
-            int temp = Integer.parseInt(password);
-
-            if (mEmailView.getText().toString().length() == 4) {
-                int rowsAffected = db.change_passcode(db.getWritableDatabase(), temp);
-                Log.d("UPDATE_PASSCODE", "resetPasscode: " + rowsAffected + " row changed");
-            }
+            int rowsAffected = db.change_passcode(db.getWritableDatabase(), password);
+            Log.d("UPDATE_PASSCODE", "resetPasscode: " + rowsAffected + " row changed");
             return true;
         }
         return false;

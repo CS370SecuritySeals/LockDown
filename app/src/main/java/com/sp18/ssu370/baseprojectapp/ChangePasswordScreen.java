@@ -17,6 +17,7 @@ public class ChangePasswordScreen extends AppCompatActivity {
     private Button returnHomeButton;
     private Button tempSettingsButton;
     private Button changePCButton;
+    private TextView code;
     private DatabaseHelper db;
 
     @Override
@@ -27,6 +28,13 @@ public class ChangePasswordScreen extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         db = new DatabaseHelper(this);
+        db.getReadableDatabase();
+
+        code = (TextView) findViewById(R.id.PasscodeDisplay2);
+        if(db.getPasscode().equals("****"))
+            code.setText(db.getPasscode());
+        else
+            code.setText(String.format("%04d", Integer.parseInt(db.getPasscode())));
 
         changePCButton = (Button) findViewById(R.id.change_pc_button);
         changePCButton.setOnClickListener(new View.OnClickListener() {

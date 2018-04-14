@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sp18.ssu370.baseprojectapp.ChangePasswordScreen;
@@ -25,13 +26,24 @@ public class MainActivity extends AppCompatActivity {
     private Button changePCButton;
     private Button enterMapsButton;
     private Button enterLockDownButton;
+    private TextView code;
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        db = new DatabaseHelper(this);
+        db.getReadableDatabase();
+
+        code = (TextView) findViewById(R.id.PasscodeDisplay);
+        if(db.getPasscode().equals("****"))
+            code.setText(db.getPasscode());
+        else
+            code.setText(String.format("%04d", Integer.parseInt(db.getPasscode())));
+
         changePCButton = (Button) findViewById(R.id.change_pc_button);
-        
         changePCButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         enterMapsButton = (Button) findViewById(R.id.enter_maps_button);
-
         enterMapsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -55,6 +55,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // id auto-increments & doesn't need to be handled
         values1.put(Passcodes.COLUMN_QUESTION, "What was your first car?");
         values1.put(Passcodes.COLUMN_IS_SELECTED, false);
+        values1.put(Passcodes.COLUMN_PASSCODE, "****");
         values2.put(Passcodes.COLUMN_QUESTION, "Where do you like to vacation?");
         values2.put(Passcodes.COLUMN_IS_SELECTED, false);
         values3.put(Passcodes.COLUMN_QUESTION, "Who was your childhood best friend?");
@@ -129,7 +130,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // RETURNS PASSCODE STORED IN PASSCODE COLUMN ROW 1
-    public int getPasscode() {
+    public String getPasscode() {
         // get readable database as we are not inserting anything
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -142,7 +143,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
         // store value of passcode
-        int temp = cursor.getInt(cursor.getColumnIndex(Passcodes.COLUMN_PASSCODE));
+        String temp = cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_PASSCODE));
 
         // close the db connection
         cursor.close();
@@ -217,7 +218,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // passcode setter
-    public int change_passcode(SQLiteDatabase temp, int entry){
+    public int change_passcode(SQLiteDatabase temp, String entry){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -283,4 +284,3 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return passcodes;
     }
 }
-
