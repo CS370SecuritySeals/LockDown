@@ -4,8 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_screen"
+    android:background="@color/colorBackground"
     tools:context="com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity">
+
+    <ImageView
+        android:id="@+id/triangleAccent"
+        android:layout_width="128dp"
+        android:layout_height="147dp"
+        app:srcCompat="@drawable/triangle_accent_t"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/PasscodeHeader"
@@ -21,57 +29,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.144" />
-
-    <Button
-        android:id="@+id/change_pc_button"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="58dp"
-        android:fontFamily="monospace"
-        android:text="@string/changePasscode"
-        android:textAlignment="center"
-        android:textColor="@color/colorFont"
-        android:textSize="24sp"
-        android:onClick="@string/app_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.31" />
-
-    <Button
-        android:id="@+id/enterLockDown"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="59dp"
-        android:fontFamily="monospace"
-        android:text="@string/enterLockDown"
-        android:textAlignment="center"
-        android:textColor="@color/colorFont"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.74" />
-
-
-    <Button
-        android:id="@+id/enter_maps_button"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="56dp"
-        android:fontFamily="monospace"
-        android:text="@string/enterMaps"
-        android:textAlignment="center"
-        android:textColor="@color/colorFont"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
 
     <TextView
         android:id="@+id/PasscodeDisplay"
@@ -89,6 +46,73 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.204" />
+
+    <Button
+        android:id="@+id/change_pc_button"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:onClick="@string/app_name"
+        android:text="@string/changePasscode"
+        android:textAlignment="center"
+        android:textColor="@color/colorFont"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.328" />
+
+    <ImageView
+        android:id="@+id/centerLock"
+        android:layout_width="125dp"
+        android:layout_height="102dp"
+        android:layout_marginBottom="34dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="9dp"
+        app:layout_constraintBottom_toTopOf="@+id/enterLockDown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/change_pc_button"
+        app:layout_constraintVertical_bias="0.466"
+        app:srcCompat="@drawable/center_lock_t" />
+
+    <Button
+        android:id="@+id/enterLockDown"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="59dp"
+        android:fontFamily="monospace"
+        android:text="@string/enterLockDown"
+        android:textAlignment="center"
+        android:textColor="@color/colorFont"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.782" />
+
+
+    <Button
+        android:id="@+id/enter_maps_button"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:fontFamily="monospace"
+        android:text="@string/enterMaps"
+        android:textAlignment="center"
+        android:textColor="@color/colorFont"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.942" />
 
 </android.support.constraint.ConstraintLayout>
     <!--android:fontFamily="@font/advent_pro_thin"-->
