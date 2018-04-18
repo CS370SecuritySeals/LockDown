@@ -9,9 +9,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.content.Context;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 import com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity;
 import sqlite.DatabaseHelper;
+
 
 public class ChangePasswordScreen extends AppCompatActivity {
     private Button returnHomeButton;
@@ -53,5 +60,9 @@ public class ChangePasswordScreen extends AppCompatActivity {
             }
         });
 
+
+
     }
 }
+
+

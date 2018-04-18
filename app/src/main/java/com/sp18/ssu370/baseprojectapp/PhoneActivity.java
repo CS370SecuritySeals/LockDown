@@ -1,27 +1,16 @@
 package com.sp18.ssu370.baseprojectapp;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.renderscript.ScriptGroup;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import android.net.Uri;
 import android.os.Bundle;
-import android.telephony.PhoneStateListener;
+import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
-import android.view.KeyEvent;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 import android.widget.EditText;
-import android.text.TextUtils;
-import android.net.Uri;
-
-
+import android.widget.Toast;
 
 import com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity;
 
@@ -61,6 +50,21 @@ public class PhoneActivity extends AppCompatActivity {
             }
         });
 
+        MainActivity.setOnTouchListener(new OnSwipeTouchListener(PhoneActivity.this) {
+            public void onSwipeUp() {
+                Toast.makeText(PhoneActivity.this, "top", Toast.LENGTH_SHORT).show();
+            }
+            public void onSwipeRight() {
+                Toast.makeText(PhoneActivity.this, "right", Toast.LENGTH_SHORT).show();
+            }
+            public void onSwipeLeft() {
+                Toast.makeText(PhoneActivity.this, "left", Toast.LENGTH_SHORT).show();
+            }
+            public void onSwipeDown() {
+                Toast.makeText(PhoneActivity.this, "bottom", Toast.LENGTH_SHORT).show();
+            }
+
+        });
 
         exitLockDownButton = (Button) findViewById(R.id.exit_lockdown_button);
 
@@ -71,7 +75,9 @@ public class PhoneActivity extends AppCompatActivity {
             }
 
         });
+
     }
 }
+
 
 
