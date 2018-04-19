@@ -11,8 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity;
+import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.text.TextUtils;
+import android.net.Uri;
 
 public class PhoneActivity extends AppCompatActivity {
     private Button exitLockDownButton;
@@ -75,9 +79,7 @@ public class PhoneActivity extends AppCompatActivity {
             }
 
         });
-
     }
 }
-
 
 

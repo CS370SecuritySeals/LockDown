@@ -2,12 +2,14 @@
     <string name="app_name">Lock Down</string>
     <string name="passcodeHeader">Your Passcode</string>
     <string name="Passcode">****</string>
+    <string name="PasscodeUpdate">****</string>
     <string name="changePasscode">&#171; Change Passcode</string>
     <string name="reset">&#171; Reset</string>
     <string name="enterLockDown">Enter LockDown &#187;</string>
     <string name="title_activity_maps">Map</string>
     <string name="tempDash">———— ———— ———— ————</string>
     <string name="title_activity_change_password_screen">ChangePasswordScreen</string>
+    <string name="title_exit_activity">Exit Lockdown</string>
     <string name="InputNewCode">Input New Passcode</string>
     <string name="SelectAnswer">Select 3 of the following for your security questions</string>
     <string name="ReturnHome">Return Home &#187;</string>
@@ -15,6 +17,10 @@
     <string name="tempSettingsButton">&#171; Edit security questions</string>
     <string name="exitlockdown">&#171; Exit LockDown</string>
     <string name="enterMaps">Enter Google Maps &#187;</string>
+    <string name="edit">Edit</string>
+    <string name="question">Q</string>
+    <string name="test">test</string>
+    <string name="title_activity_edit_questions">Edit Questions</string>
 
     <string-array name="security_array">
         <item>Question 1</item>

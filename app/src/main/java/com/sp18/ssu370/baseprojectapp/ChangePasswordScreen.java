@@ -1,4 +1,6 @@
 package com.sp18.ssu370.baseprojectapp;
+import com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity;
+import sqlite.DatabaseHelper;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,21 +11,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.content.Context;
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-import com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity;
-import sqlite.DatabaseHelper;
-
+import com.sp18.ssu370.baseprojectapp.R;
 
 public class ChangePasswordScreen extends AppCompatActivity {
     private Button returnHomeButton;
     private Button tempSettingsButton;
     private Button changePCButton;
+    private TextView code;
     private DatabaseHelper db;
 
     @Override
@@ -34,6 +28,13 @@ public class ChangePasswordScreen extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         db = new DatabaseHelper(this);
+        db.getReadableDatabase();
+
+        code = (TextView) findViewById(R.id.PasscodeDisplay2);
+        if(db.getPasscode().equals("****"))
+            code.setText(db.getPasscode());
+        else
+            code.setText(String.format("%04d", Integer.parseInt(db.getPasscode())));
 
         changePCButton = (Button) findViewById(R.id.change_pc_button);
         changePCButton.setOnClickListener(new View.OnClickListener() {
@@ -56,13 +57,8 @@ public class ChangePasswordScreen extends AppCompatActivity {
         tempSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ChangePasswordScreen.this, SettingsActivity.class));
+                startActivity(new Intent(ChangePasswordScreen.this, QuestionActivity.class));
             }
         });
-
-
-
     }
 }
-
-

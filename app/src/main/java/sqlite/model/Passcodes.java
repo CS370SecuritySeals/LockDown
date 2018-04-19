@@ -10,18 +10,18 @@ public class Passcodes {
     public static final String COLUMN_PASSCODE = "passcode";
 
     private int id;
-    private int passcode;
+    private String passcode;
     private String question;
     private String answer;
     private boolean is_selected;
 
     // Create table SQL query
     public static final String CREATE_TABLE =
-            "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
-                    + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + COLUMN_QUESTION + " TEXT,"
-                    + COLUMN_ANSWER + " TEXT,"
-                    + COLUMN_IS_SELECTED + " BOOLEAN,"
+            "CREATE TABLE " + TABLE_NAME + "("
+                    + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + COLUMN_QUESTION + " TEXT, "
+                    + COLUMN_ANSWER + " TEXT, "
+                    + COLUMN_IS_SELECTED + " BOOLEAN, "
                     + COLUMN_PASSCODE + " INTEGER"
                     + ")";
 
@@ -41,17 +41,17 @@ public class Passcodes {
     }
 
     // getter for passcode
-    public int getPasscode() {
+    public String getPasscode() {
         return passcode;
     }
 
     // setter for passcode
-    public void setPasscode(int p) {
+    public void setPasscode(String p) {
         this.passcode = p;
     }
 
     // method for checking if entered value matches passcode
-    public boolean doesPasscodeMatch(int p){
+    public boolean doesPasscodeMatch(String p){
         return (this.passcode == p);
     }
 

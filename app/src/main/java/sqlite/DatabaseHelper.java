@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import sqlite.model.Passcodes;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     // Database Version (may not be necessary)
@@ -16,6 +17,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Name
     private static final String DATABASE_NAME = "passcodes_db";
+
+    private SQLiteDatabase mDefaultWritableDatabase = null;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -26,16 +29,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // create passcodes table
         try {
-            db.execSQL(Passcodes.CREATE_TABLE);
+                db.execSQL(Passcodes.CREATE_TABLE);
         }
         catch (Exception e) {
-            System.out.println("Error: " + e);
+            System.out.println("Database Creation Error: " + e);
         }
+        try {
+            addRows(db);
+        }
+        catch (Exception e) {
+            System.out.println("Addrows in OnCreate Error: " + e);
+        }
+    }
 
-        // get writable database as we want to write data
-        //SQLiteDatabase db =
-        this.getWritableDatabase();
-
+    public void addRows(SQLiteDatabase db){
         // populate it with initial 6 security questions
         ContentValues values1 = new ContentValues();
         ContentValues values2 = new ContentValues();
@@ -48,6 +55,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // id auto-increments & doesn't need to be handled
         values1.put(Passcodes.COLUMN_QUESTION, "What was your first car?");
         values1.put(Passcodes.COLUMN_IS_SELECTED, false);
+        values1.put(Passcodes.COLUMN_PASSCODE, "****");
         values2.put(Passcodes.COLUMN_QUESTION, "Where do you like to vacation?");
         values2.put(Passcodes.COLUMN_IS_SELECTED, false);
         values3.put(Passcodes.COLUMN_QUESTION, "Who was your childhood best friend?");
@@ -61,7 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // insert rows
         try{
-            db.insert(Passcodes.TABLE_NAME, null, values1);
+            Log.d("Addrows", "Added row:" + db.insert(Passcodes.TABLE_NAME, null, values1));
             db.insert(Passcodes.TABLE_NAME, null, values2);
             db.insert(Passcodes.TABLE_NAME, null, values3);
             db.insert(Passcodes.TABLE_NAME, null, values4);
@@ -77,10 +85,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
+        this.mDefaultWritableDatabase = db;
         db.execSQL("DROP TABLE IF EXISTS " + Passcodes.TABLE_NAME);
 
         // Create tables again
         onCreate(db);
+    }
+
+    @Override
+    public SQLiteDatabase getWritableDatabase() {
+        final SQLiteDatabase db;
+        if(mDefaultWritableDatabase != null){
+            db = mDefaultWritableDatabase;
+        } else {
+            db = super.getWritableDatabase();
+        }
+        return db;
     }
 
     // RETURNS PASSCODE OBJECT WITHOUT PASSCODE COLUMN
@@ -110,7 +130,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // RETURNS PASSCODE STORED IN PASSCODE COLUMN ROW 1
-    public int getPasscode() {
+    public String getPasscode() {
         // get readable database as we are not inserting anything
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -123,7 +143,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
         // store value of passcode
-        int temp = cursor.getInt(cursor.getColumnIndex(Passcodes.COLUMN_PASSCODE));
+        String temp = cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_PASSCODE));
 
         // close the db connection
         cursor.close();
@@ -198,8 +218,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // passcode setter
-    public int change_passcode(int entry){
-        // get readable database as we are not inserting anything
+    public int change_passcode(SQLiteDatabase temp, String entry){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -234,5 +253,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // updating row
         return db.update(Passcodes.TABLE_NAME, values, Passcodes.COLUMN_ID + " = ?",
                 new String[]{String.valueOf(questionId)});
+    }
+
+    public List<Passcodes> getAll() {
+        List<Passcodes> passcodes = new ArrayList<>();
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + Passcodes.TABLE_NAME + " ORDER BY " +
+                Passcodes.COLUMN_ID + " ASC";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Passcodes passcode = new Passcodes();
+                passcode.setId(cursor.getInt(cursor.getColumnIndex(Passcodes.COLUMN_ID)));
+                passcode.setAnswer(cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_ANSWER)));
+                passcode.setQuestion(cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_QUESTION)));
+
+                passcodes.add(passcode);
+            } while (cursor.moveToNext());
+        }
+
+        // close db connection
+        db.close();
+
+        // return notes list
+        return passcodes;
     }
 }
