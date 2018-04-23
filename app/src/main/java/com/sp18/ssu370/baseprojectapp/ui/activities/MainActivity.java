@@ -15,6 +15,8 @@ import sqlite.DatabaseHelper;
 import android.view.MotionEvent;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.sp18.ssu370.baseprojectapp.OnSwipeTouchListener;
 
 public class MainActivity extends AppCompatActivity {
@@ -58,13 +60,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         enterMapsButton = (Button) findViewById(R.id.enter_maps_button);
 
         enterMapsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MapsActivity.class));
+                if(!db.getPasscode().equals("****"))
+                    startActivity(new Intent(MainActivity.this, MapsActivity.class));
 
             }
         });
@@ -74,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
         enterLockDownButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, PhoneActivity.class));
+                if(!db.getPasscode().equals("****"))
+                    startActivity(new Intent(MainActivity.this, PhoneActivity.class));
             }
         });
 
@@ -85,10 +88,6 @@ public class MainActivity extends AppCompatActivity {
             public void onSwipeLeft() {
                 Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
             }
-
         });
-
-
-
     }
 }

@@ -24,8 +24,8 @@ public class ChangePasswordScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password_screen);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         db = new DatabaseHelper(this);
         db.getReadableDatabase();
@@ -57,7 +57,7 @@ public class ChangePasswordScreen extends AppCompatActivity {
         tempSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ChangePasswordScreen.this, QuestionActivity.class));
+                startActivity(new Intent(ChangePasswordScreen.this, EditQuestionsActivity.class));
             }
         });
     }

@@ -3,7 +3,7 @@
     <string name="passcodeHeader">Your Passcode</string>
     <string name="Passcode">****</string>
     <string name="PasscodeUpdate">****</string>
-    <string name="changePasscode">&#171; Change Passcode</string>
+    <string name="changePasscode">Change Passcode &#187;</string>
     <string name="reset">&#171; Reset</string>
     <string name="enterLockDown">Enter LockDown &#187;</string>
     <string name="title_activity_maps">Map</string>
@@ -13,8 +13,9 @@
     <string name="InputNewCode">Input New Passcode</string>
     <string name="SelectAnswer">Select 3 of the following for your security questions</string>
     <string name="ReturnHome">Return Home &#187;</string>
+    <string name="Back">&#171; Back</string>
     <string name="Select_Questions">Select 6 of the Following Questions:</string>
-    <string name="tempSettingsButton">&#171; Edit security questions</string>
+    <string name="tempSettingsButton">Edit security questions &#187;</string>
     <string name="exitlockdown">&#171; Exit LockDown</string>
     <string name="enterMaps">Enter Google Maps &#187;</string>
     <string name="edit">Edit</string>
@@ -31,7 +32,24 @@
         <item>Question 6</item>
         <item>Question 7</item>
     </string-array>
+
+    <string name="Q1">Q1</string>
+    <string name="Q2">Q2</string>
+    <string name="Q3">Q3</string>
+    <string name="Q4">Q4</string>
+    <string name="Q5">Q5</string>
+    <string name="Q6">Q6</string>
+    <string name="A1">A1</string>
+    <string name="A2">A2</string>
+    <string name="A3">A3</string>
+    <string name="A4">A4</string>
+    <string name="A5">A5</string>
+    <string name="A6">A6</string>
+    <string name="line">___________________________</string>
+
     <string name="title_activity_settings">Return to change passcode</string>
+    <string name="edit_question">your question</string>
+    <string name="edit_answer">your answer</string>
 
     <!-- Strings related to Settings -->
 

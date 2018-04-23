@@ -18,6 +18,8 @@ import android.text.TextUtils;
 import android.text.TextUtils;
 import android.net.Uri;
 
+import com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity;
+
 public class PhoneActivity extends AppCompatActivity {
     private Button exitLockDownButton;
     private TelephonyManager mTelephonyManager;

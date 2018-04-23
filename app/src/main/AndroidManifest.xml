@@ -55,9 +55,6 @@
             android:label="@string/title_activity_change_password_screen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" />
-        <activity
             android:name=".ExitLockdownActivity"
             android:label="@string/title_activity_exit_lockdown" />
         <activity android:name=".PhoneActivity"/>
@@ -65,9 +62,9 @@
         <activity
             android:name=".UpdatePasscodeActivity"
             android:label="@string/title_activity_exit_lockdown" />
+
         <activity
-            android:name=".QuestionActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".EditQuestionsActivity"
             android:label="@string/title_activity_edit_questions" />
 
     </application>
