@@ -1,22 +1,16 @@
 package com.sp18.ssu370.baseprojectapp;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity;
 
 import sqlite.DatabaseHelper;
 
@@ -89,7 +83,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
                 Q.setText(db.getQuestion(1));
                 A.setText(db.getAnswer(1));
 
-                // set dialog message
+                // set question_dialog message
                 alertDialogBuilder
                         .setCancelable(false)
                         .setPositiveButton("OK",
@@ -129,7 +123,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
                 Q.setText(db.getQuestion(2));
                 A.setText(db.getAnswer(2));
 
-                // set dialog message
+                // set question_dialog message
                 alertDialogBuilder
                         .setCancelable(false)
                         .setPositiveButton("OK",
@@ -169,7 +163,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
                 Q.setText(db.getQuestion(3));
                 A.setText(db.getAnswer(3));
 
-                // set dialog message
+                // set question_dialog message
                 alertDialogBuilder
                         .setCancelable(false)
                         .setPositiveButton("OK",
@@ -209,7 +203,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
                 Q.setText(db.getQuestion(4));
                 A.setText(db.getAnswer(4));
 
-                // set dialog message
+                // set question_dialog message
                 alertDialogBuilder
                         .setCancelable(false)
                         .setPositiveButton("OK",
@@ -249,7 +243,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
                 Q.setText(db.getQuestion(5));
                 A.setText(db.getAnswer(5));
 
-                // set dialog message
+                // set question_dialog message
                 alertDialogBuilder
                         .setCancelable(false)
                         .setPositiveButton("OK",
@@ -289,7 +283,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
                 Q.setText(db.getQuestion(6));
                 A.setText(db.getAnswer(6));
 
-                // set dialog message
+                // set question_dialog message
                 alertDialogBuilder
                         .setCancelable(false)
                         .setPositiveButton("OK",
