@@ -4,8 +4,9 @@
     <string name="Passcode">****</string>
     <string name="PasscodeUpdate">****</string>
     <string name="changePasscode">Change Passcode &#187;</string>
+    <string name="editSecurity">Security Settings &#187;</string>
     <string name="reset">&#171; Reset</string>
-    <string name="enterLockDown">Enter LockDown &#187;</string>
+    <string name="enterLockDown">Enter Phone &#187;</string>
     <string name="title_activity_maps">Map</string>
     <string name="tempDash">———— ———— ———— ————</string>
     <string name="title_activity_change_password_screen">ChangePasswordScreen</string>
