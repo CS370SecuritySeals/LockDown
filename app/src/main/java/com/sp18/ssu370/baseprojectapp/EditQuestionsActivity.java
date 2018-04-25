@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -18,7 +21,6 @@ public class EditQuestionsActivity extends AppCompatActivity {
     private Button returnHomeButton;
     private TextView Q1, Q2, Q3, Q4, Q5, Q6;
     private TextView A1, A2, A3, A4, A5, A6;
-    private TextView L1, L2, L3, L4, L5;
     private Button E1, E2, E3, E4, E5, E6;
     private DatabaseHelper db;
     final Context context = this;
@@ -32,12 +34,6 @@ public class EditQuestionsActivity extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
         db.getReadableDatabase();
-
-        L1 = (TextView) findViewById(R.id.L1);
-        L2 = (TextView) findViewById(R.id.L2);
-        L3 = (TextView) findViewById(R.id.L3);
-        L4 = (TextView) findViewById(R.id.L4);
-        L5 = (TextView) findViewById(R.id.L5);
 
         Q1 = (TextView) findViewById(R.id.Q1);
         A1 = (TextView) findViewById(R.id.A1);
@@ -73,39 +69,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
         E1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LayoutInflater li = LayoutInflater.from(context);
-                View promptsView = li.inflate(R.layout.question_dialog, null);
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                alertDialogBuilder.setView(promptsView);
-                final EditText userInput = (EditText) promptsView.findViewById(R.id.edit_question);
-                final EditText Q = (EditText)promptsView.findViewById(R.id.edit_question);
-                final EditText A = (EditText)promptsView.findViewById(R.id.edit_answer);
-                Q.setText(db.getQuestion(1));
-                A.setText(db.getAnswer(1));
-
-                // set question_dialog message
-                alertDialogBuilder
-                        .setCancelable(false)
-                        .setPositiveButton("OK",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,int id) {
-                                        System.out.println(Q.getText().toString());
-                                        System.out.println(A.getText().toString());
-                                        if(!Q.getText().toString().equals("") && !A.getText().toString().equals("")) {
-                                            db.change_question(1, Q.getText().toString());
-                                            db.change_answer(1, A.getText().toString());
-                                            startActivity(new Intent(EditQuestionsActivity.this, EditQuestionsActivity.class));
-                                        }
-                                    }
-                                })
-                        .setNegativeButton("Cancel",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,int id) {
-                                        dialog.cancel();
-                                    }
-                                });
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
+                Dialog(1);
             }
         });
 
@@ -113,39 +77,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
         E2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                LayoutInflater li = LayoutInflater.from(context);
-                View promptsView = li.inflate(R.layout.question_dialog, null);
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                alertDialogBuilder.setView(promptsView);
-                final EditText userInput = (EditText) promptsView.findViewById(R.id.edit_question);
-                final EditText Q = (EditText)promptsView.findViewById(R.id.edit_question);
-                final EditText A = (EditText)promptsView.findViewById(R.id.edit_answer);
-                Q.setText(db.getQuestion(2));
-                A.setText(db.getAnswer(2));
-
-                // set question_dialog message
-                alertDialogBuilder
-                        .setCancelable(false)
-                        .setPositiveButton("OK",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,int id) {
-                                        System.out.println(Q.getText().toString());
-                                        System.out.println(A.getText().toString());
-                                        if(!Q.getText().toString().equals("") && !A.getText().toString().equals("")) {
-                                            db.change_question(2, Q.getText().toString());
-                                            db.change_answer(2, A.getText().toString());
-                                            startActivity(new Intent(EditQuestionsActivity.this, EditQuestionsActivity.class));
-                                        }
-                                    }
-                                })
-                        .setNegativeButton("Cancel",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,int id) {
-                                        dialog.cancel();
-                                    }
-                                });
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
+                Dialog(2);
             }
         });
 
@@ -153,39 +85,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
         E3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LayoutInflater li = LayoutInflater.from(context);
-                View promptsView = li.inflate(R.layout.question_dialog, null);
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                alertDialogBuilder.setView(promptsView);
-                final EditText userInput = (EditText) promptsView.findViewById(R.id.edit_question);
-                final EditText Q = (EditText)promptsView.findViewById(R.id.edit_question);
-                final EditText A = (EditText)promptsView.findViewById(R.id.edit_answer);
-                Q.setText(db.getQuestion(3));
-                A.setText(db.getAnswer(3));
-
-                // set question_dialog message
-                alertDialogBuilder
-                        .setCancelable(false)
-                        .setPositiveButton("OK",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,int id) {
-                                        System.out.println(Q.getText().toString());
-                                        System.out.println(A.getText().toString());
-                                        if(!Q.getText().toString().equals("") && !A.getText().toString().equals("")) {
-                                            db.change_question(3, Q.getText().toString());
-                                            db.change_answer(3, A.getText().toString());
-                                            startActivity(new Intent(EditQuestionsActivity.this, EditQuestionsActivity.class));
-                                        }
-                                    }
-                                })
-                        .setNegativeButton("Cancel",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,int id) {
-                                        dialog.cancel();
-                                    }
-                                });
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
+                Dialog(3);
             }
         });
 
@@ -193,39 +93,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
         E4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LayoutInflater li = LayoutInflater.from(context);
-                View promptsView = li.inflate(R.layout.question_dialog, null);
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                alertDialogBuilder.setView(promptsView);
-                final EditText userInput = (EditText) promptsView.findViewById(R.id.edit_question);
-                final EditText Q = (EditText)promptsView.findViewById(R.id.edit_question);
-                final EditText A = (EditText)promptsView.findViewById(R.id.edit_answer);
-                Q.setText(db.getQuestion(4));
-                A.setText(db.getAnswer(4));
-
-                // set question_dialog message
-                alertDialogBuilder
-                        .setCancelable(false)
-                        .setPositiveButton("OK",
-                                new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int id) {
-                                System.out.println(Q.getText().toString());
-                                System.out.println(A.getText().toString());
-                                if(!Q.getText().toString().equals("") && !A.getText().toString().equals("")) {
-                                    db.change_question(4, Q.getText().toString());
-                                    db.change_answer(4, A.getText().toString());
-                                    startActivity(new Intent(EditQuestionsActivity.this, EditQuestionsActivity.class));
-                                    }
-                                    }
-                        })
-                        .setNegativeButton("Cancel",
-                                new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int id) {
-                                dialog.cancel();
-                                }
-                        });
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
+                Dialog(4);
             }
         });
 
@@ -233,39 +101,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
         E5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LayoutInflater li = LayoutInflater.from(context);
-                View promptsView = li.inflate(R.layout.question_dialog, null);
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                alertDialogBuilder.setView(promptsView);
-                final EditText userInput = (EditText) promptsView.findViewById(R.id.edit_question);
-                final EditText Q = (EditText)promptsView.findViewById(R.id.edit_question);
-                final EditText A = (EditText)promptsView.findViewById(R.id.edit_answer);
-                Q.setText(db.getQuestion(5));
-                A.setText(db.getAnswer(5));
-
-                // set question_dialog message
-                alertDialogBuilder
-                        .setCancelable(false)
-                        .setPositiveButton("OK",
-                                new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int id) {
-                                System.out.println(Q.getText().toString());
-                                System.out.println(A.getText().toString());
-                                if(!Q.getText().toString().equals("") && !A.getText().toString().equals("")) {
-                                    db.change_question(5, Q.getText().toString());
-                                    db.change_answer(5, A.getText().toString());
-                                    startActivity(new Intent(EditQuestionsActivity.this, EditQuestionsActivity.class));
-                                    }
-                                    }
-                        })
-                        .setNegativeButton("Cancel",
-                                new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int id) {
-                                dialog.cancel();
-                                }
-                        });
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
+                Dialog(5);
             }
         });
 
@@ -273,39 +109,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
         E6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LayoutInflater li = LayoutInflater.from(context);
-                View promptsView = li.inflate(R.layout.question_dialog, null);
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                alertDialogBuilder.setView(promptsView);
-                final EditText userInput = (EditText) promptsView.findViewById(R.id.edit_question);
-                final EditText Q = (EditText)promptsView.findViewById(R.id.edit_question);
-                final EditText A = (EditText)promptsView.findViewById(R.id.edit_answer);
-                Q.setText(db.getQuestion(6));
-                A.setText(db.getAnswer(6));
-
-                // set question_dialog message
-                alertDialogBuilder
-                        .setCancelable(false)
-                        .setPositiveButton("OK",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,int id) {
-                                        System.out.println(Q.getText().toString());
-                                        System.out.println(A.getText().toString());
-                                        if(!Q.getText().toString().equals("") && !A.getText().toString().equals("")) {
-                                            db.change_question(6, Q.getText().toString());
-                                            db.change_answer(6, A.getText().toString());
-                                            startActivity(new Intent(EditQuestionsActivity.this, EditQuestionsActivity.class));
-                                        }
-                                    }
-                                })
-                        .setNegativeButton("Cancel",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,int id) {
-                                        dialog.cancel();
-                                    }
-                                });
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
+                Dialog(6);
             }
         });
 
@@ -316,5 +120,51 @@ public class EditQuestionsActivity extends AppCompatActivity {
                 startActivity(new Intent(EditQuestionsActivity.this, ChangePasswordScreen.class));
             }
         });
+    }
+
+    public void Dialog(final int num){
+        LayoutInflater li = LayoutInflater.from(context);
+        View promptsView = li.inflate(R.layout.question_dialog, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setView(promptsView);
+        final EditText userInput = (EditText) promptsView.findViewById(R.id.edit_question);
+        final EditText Q = (EditText)promptsView.findViewById(R.id.edit_question);
+        final EditText A = (EditText)promptsView.findViewById(R.id.edit_answer);
+        Q.setText(db.getQuestion(num));
+        A.setText(db.getAnswer(num));
+        CheckBox use = (CheckBox) promptsView.findViewById(R.id.use);
+
+        use.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+
+                } else {
+
+                }
+            }
+        });
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                System.out.println(Q.getText().toString());
+                                System.out.println(A.getText().toString());
+                                if(!Q.getText().toString().equals("") && !A.getText().toString().equals("")) {
+                                    db.change_question(num, Q.getText().toString());
+                                    db.change_answer(num, A.getText().toString());
+                                    startActivity(new Intent(EditQuestionsActivity.this, EditQuestionsActivity.class));
+                                }
+                            }
+                        })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                dialog.cancel();
+                            }
+                        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }
