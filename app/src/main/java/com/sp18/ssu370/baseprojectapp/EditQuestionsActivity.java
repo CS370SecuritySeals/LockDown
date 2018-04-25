@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -19,8 +20,8 @@ import sqlite.DatabaseHelper;
 
 public class EditQuestionsActivity extends AppCompatActivity {
     private Button returnHomeButton;
-    private TextView Q1, Q2, Q3, Q4, Q5, Q6;
-    private TextView A1, A2, A3, A4, A5, A6;
+    private TextView Q;
+    private TextView A;
     private Button E1, E2, E3, E4, E5, E6;
     private DatabaseHelper db;
     final Context context = this;
@@ -29,47 +30,46 @@ public class EditQuestionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_questions);
-        EditText Q = (EditText)findViewById(R.id.edit_question);
-        EditText A = (EditText)findViewById(R.id.edit_answer);
 
         db = new DatabaseHelper(this);
         db.getReadableDatabase();
 
-        Q1 = (TextView) findViewById(R.id.Q1);
-        A1 = (TextView) findViewById(R.id.A1);
-        A1.setText(" " + db.getAnswer(1));
-        Q1.setText(" " + db.getQuestion(1));
+        Q = (TextView) findViewById(R.id.Q1);
+        A = (TextView) findViewById(R.id.A1);
+        A.setText(" " + db.getAnswer(1));
+        Q.setText(" " + db.getQuestion(1));
 
-        Q2 = (TextView) findViewById(R.id.Q2);
-        A2 = (TextView) findViewById(R.id.A2);
-        Q2.setText(" " + db.getQuestion(2));
-        A2.setText(" " + db.getAnswer(2));
+        Q = (TextView) findViewById(R.id.Q2);
+        A = (TextView) findViewById(R.id.A2);
+        Q.setText(" " + db.getQuestion(2));
+        A.setText(" " + db.getAnswer(2));
 
-        Q3 = (TextView) findViewById(R.id.Q3);
-        A3 = (TextView) findViewById(R.id.A3);
-        Q3.setText(" " + db.getQuestion(3));
-        A3.setText(" " + db.getAnswer(3));
+        Q = (TextView) findViewById(R.id.Q3);
+        A = (TextView) findViewById(R.id.A3);
+        Q.setText(" " + db.getQuestion(3));
+        A.setText(" " + db.getAnswer(3));
 
-        Q4 = (TextView) findViewById(R.id.Q4);
-        A4 = (TextView) findViewById(R.id.A4);
-        Q4.setText(" " + db.getQuestion(4));
-        A4.setText(" " + db.getAnswer(4));
+        Q = (TextView) findViewById(R.id.Q4);
+        A = (TextView) findViewById(R.id.A4);
+        Q.setText(" " + db.getQuestion(4));
+        A.setText(" " + db.getAnswer(4));
 
-        Q5 = (TextView) findViewById(R.id.Q5);
-        A5 = (TextView) findViewById(R.id.A5);
-        Q5.setText(" " + db.getQuestion(5));
-        A5.setText(" " + db.getAnswer(5));
+        Q = (TextView) findViewById(R.id.Q5);
+        A = (TextView) findViewById(R.id.A5);
+        Q.setText(" " + db.getQuestion(5));
+        A.setText(" " + db.getAnswer(5));
 
-        Q6 = (TextView) findViewById(R.id.Q6);
-        A6 = (TextView) findViewById(R.id.A6);
-        Q6.setText(" " + db.getQuestion(6));
-        A6.setText(" " + db.getAnswer(6));
+        Q = (TextView) findViewById(R.id.Q6);
+        A = (TextView) findViewById(R.id.A6);
+        Q.setText(" " + db.getQuestion(6));
+        A.setText(" " + db.getAnswer(6));
 
         E1 = (Button) findViewById(R.id.edit1);
         E1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Dialog(1);
+                boolean temp = db.getIsSelected(1);
             }
         });
 
@@ -78,6 +78,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dialog(2);
+                boolean temp = db.getIsSelected(1);
             }
         });
 
@@ -132,15 +133,21 @@ public class EditQuestionsActivity extends AppCompatActivity {
         final EditText A = (EditText)promptsView.findViewById(R.id.edit_answer);
         Q.setText(db.getQuestion(num));
         A.setText(db.getAnswer(num));
-        CheckBox use = (CheckBox) promptsView.findViewById(R.id.use);
+        final CheckBox use = (CheckBox) promptsView.findViewById(R.id.use);
 
         use.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-
+                    use.setChecked(true);
+                    //db.change_selected(num, 1);
+                    //int rowsAffected = db.change_selected(num, true);
+                    //Log.d("IS_SELECTED", "change made: " + rowsAffected + " row changed");
                 } else {
-
+                    use.setChecked(false);
+                    //db.change_selected(num, 0);
+                    //int rowsAffected = db.change_selected(num, false);
+                    //Log.d("IS_SELECTED", "change made: " + rowsAffected + " row changed");
                 }
             }
         });
@@ -149,11 +156,14 @@ public class EditQuestionsActivity extends AppCompatActivity {
                 .setPositiveButton("OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,int id) {
-                                System.out.println(Q.getText().toString());
-                                System.out.println(A.getText().toString());
+                                System.out.println("Before everything " + db.getIsSelected(num));
                                 if(!Q.getText().toString().equals("") && !A.getText().toString().equals("")) {
                                     db.change_question(num, Q.getText().toString());
                                     db.change_answer(num, A.getText().toString());
+                                    if(use.isChecked())
+                                        db.change_selected(num, true);
+                                    else
+                                        db.change_selected(num, false);
                                     startActivity(new Intent(EditQuestionsActivity.this, EditQuestionsActivity.class));
                                 }
                             }

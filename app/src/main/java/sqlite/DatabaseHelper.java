@@ -54,23 +54,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // passcode & answer should be empty
         // id auto-increments & doesn't need to be handled
         values1.put(Passcodes.COLUMN_QUESTION, "What was your first car?");
-        values1.put(Passcodes.COLUMN_ANSWER, "Your answer 1 here...");
-        values1.put(Passcodes.COLUMN_IS_SELECTED, false);
+        values1.put(Passcodes.COLUMN_ANSWER, "...");
+        values1.put(Passcodes.COLUMN_IS_SELECTED, true);
         values1.put(Passcodes.COLUMN_PASSCODE, "****");
         values2.put(Passcodes.COLUMN_QUESTION, "Where do you vacation?");
-        values2.put(Passcodes.COLUMN_ANSWER, "Your answer 2 here...");
+        values2.put(Passcodes.COLUMN_ANSWER, "...");
         values2.put(Passcodes.COLUMN_IS_SELECTED, false);
         values3.put(Passcodes.COLUMN_QUESTION, "What is your favorite food?");
-        values3.put(Passcodes.COLUMN_ANSWER, "Your answer 3 here...");
+        values3.put(Passcodes.COLUMN_ANSWER, "...");
         values3.put(Passcodes.COLUMN_IS_SELECTED, false);
         values4.put(Passcodes.COLUMN_QUESTION, "What team do you root for?");
-        values4.put(Passcodes.COLUMN_ANSWER, "Your answer 4 here...");
+        values4.put(Passcodes.COLUMN_ANSWER, "...");
         values4.put(Passcodes.COLUMN_IS_SELECTED, false);
         values5.put(Passcodes.COLUMN_QUESTION, "What is your spirit animal?");
-        values5.put(Passcodes.COLUMN_ANSWER, "Your answer 5 here...");
+        values5.put(Passcodes.COLUMN_ANSWER, "...");
         values5.put(Passcodes.COLUMN_IS_SELECTED, false);
         values6.put(Passcodes.COLUMN_QUESTION, "What is your favorite show?");
-        values6.put(Passcodes.COLUMN_ANSWER, "Your answer 6 here...");
+        values6.put(Passcodes.COLUMN_ANSWER, "...");
         values6.put(Passcodes.COLUMN_IS_SELECTED, false);
 
         // insert rows
@@ -211,6 +211,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // updating row
         return db.update(Passcodes.TABLE_NAME, values, Passcodes.COLUMN_ID + " = ?",
                 new String[]{String.valueOf(1)});
+    }
+
+    // RETURNS PASSCODE STORED IN PASSCODE COLUMN ROW 1
+    public Boolean getIsSelected(long id) {
+        // get readable database as we are not inserting anything
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(Passcodes.TABLE_NAME,
+                new String[]{Passcodes.COLUMN_IS_SELECTED},
+                Passcodes.COLUMN_ID + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
+
+        if (cursor != null)
+            cursor.moveToFirst();
+        Boolean temp = (cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_IS_SELECTED)).equals("1"));
+        //System.out.println("FROM getIsSelected " + temp);
+        // close the db connection
+        cursor.close();
+
+        return temp;
+    }
+
+    // passcode setter
+    public int change_selected(int num, boolean entry){
+        //System.out.println("going INTo change selected... " + entry);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(Passcodes.COLUMN_IS_SELECTED, entry);
+
+        // updating row
+        return db.update(Passcodes.TABLE_NAME, values, Passcodes.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(num)});
     }
 
     // question setter

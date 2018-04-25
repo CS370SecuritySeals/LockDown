@@ -3,6 +3,7 @@ package com.sp18.ssu370.baseprojectapp;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -59,17 +60,30 @@ public class ExitLockdownActivity extends AppCompatActivity {
         exitLockdownButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View mEmailView) {
-                if(passcodeMatch())
+                if (passcodeMatch()) {
                     changeActivity();
+                } //else
+                    //for (int i = 1; i < 7; i++) {
+                        //if (db.getIsSelected(i))
+                            //if (Dialog(i))
+                                //System.out.println("out");
+                    //}
             }
         });
     }
 
-    private boolean passcodeMatch(){
+    private boolean Dialog(int num){
+        System.out.println("Selected question " + num);
+        return true;
+    }
+
+    private boolean passcodeMatch() {
         String password = mEmailView.getText().toString();
         String current = String.format("%04d", Integer.parseInt(db.getPasscode()));
-        if(password.equals(current))
-            return true;
+        if (password.length() != 4) {
+        } else
+            if (password.equals(current))
+                return true;
         return false;
     }
 
