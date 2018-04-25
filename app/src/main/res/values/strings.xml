@@ -5,7 +5,7 @@
     <string name="PasscodeUpdate">****</string>
     <string name="changePasscode">Change Passcode &#187;</string>
     <string name="editSecurity">Security Settings &#187;</string>
-    <string name="reset">&#171; Reset</string>
+    <string name="reset">Reset &#187;</string>
     <string name="enterLockDown">Enter Phone &#187;</string>
     <string name="title_activity_maps">Map</string>
     <string name="tempDash">———— ———— ———— ————</string>
@@ -17,9 +17,10 @@
     <string name="Back">&#171; Back</string>
     <string name="Select_Questions">Select 6 of the Following Questions:</string>
     <string name="tempSettingsButton">Edit security questions &#187;</string>
-    <string name="exitlockdown">&#171; Exit LockDown</string>
+    <string name="exitlockdown">&#171; Exit</string>
     <string name="enterMaps">Enter Google Maps &#187;</string>
     <string name="edit">Edit</string>
+    <string name="submit">Submit &#187;</string>
     <string name="question">Q</string>
     <string name="test">test</string>
     <string name="title_activity_edit_questions">Edit Questions</string>
