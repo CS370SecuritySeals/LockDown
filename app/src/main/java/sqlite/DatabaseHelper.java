@@ -54,17 +54,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // passcode & answer should be empty
         // id auto-increments & doesn't need to be handled
         values1.put(Passcodes.COLUMN_QUESTION, "What was your first car?");
-        values1.put(Passcodes.COLUMN_IS_SELECTED, false);
+        values1.put(Passcodes.COLUMN_ANSWER, "...");
+        values1.put(Passcodes.COLUMN_IS_SELECTED, true);
         values1.put(Passcodes.COLUMN_PASSCODE, "****");
-        values2.put(Passcodes.COLUMN_QUESTION, "Where do you like to vacation?");
+        values2.put(Passcodes.COLUMN_QUESTION, "Where do you vacation?");
+        values2.put(Passcodes.COLUMN_ANSWER, "...");
         values2.put(Passcodes.COLUMN_IS_SELECTED, false);
-        values3.put(Passcodes.COLUMN_QUESTION, "Who was your childhood best friend?");
+        values3.put(Passcodes.COLUMN_QUESTION, "What is your favorite food?");
+        values3.put(Passcodes.COLUMN_ANSWER, "...");
         values3.put(Passcodes.COLUMN_IS_SELECTED, false);
-        values4.put(Passcodes.COLUMN_QUESTION, "What is your favorite sports team?");
+        values4.put(Passcodes.COLUMN_QUESTION, "What team do you root for?");
+        values4.put(Passcodes.COLUMN_ANSWER, "...");
         values4.put(Passcodes.COLUMN_IS_SELECTED, false);
         values5.put(Passcodes.COLUMN_QUESTION, "What is your spirit animal?");
+        values5.put(Passcodes.COLUMN_ANSWER, "...");
         values5.put(Passcodes.COLUMN_IS_SELECTED, false);
         values6.put(Passcodes.COLUMN_QUESTION, "What is your favorite show?");
+        values6.put(Passcodes.COLUMN_ANSWER, "...");
         values6.put(Passcodes.COLUMN_IS_SELECTED, false);
 
         // insert rows
@@ -103,6 +109,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db;
     }
 
+    // RETURNS PASSCODE STORED IN PASSCODE COLUMN ROW 1
+    public String getPasscode() {
+        // get readable database as we are not inserting anything
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(Passcodes.TABLE_NAME,
+                new String[]{Passcodes.COLUMN_PASSCODE},
+                Passcodes.COLUMN_ID + "=?",
+                new String[]{String.valueOf(1)}, null, null, null, null);
+
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        // store value of passcode
+        String temp = cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_PASSCODE));
+
+        // close the db connection
+        cursor.close();
+
+        return temp;
+    }
+
     // RETURNS PASSCODE OBJECT WITHOUT PASSCODE COLUMN
     public Passcodes getPasscodeEntry(long id) {
         // get readable database as we are not inserting anything
@@ -130,20 +158,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // RETURNS PASSCODE STORED IN PASSCODE COLUMN ROW 1
-    public String getPasscode() {
+    public String getQuestion(long id) {
         // get readable database as we are not inserting anything
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(Passcodes.TABLE_NAME,
-                new String[]{Passcodes.COLUMN_PASSCODE},
+                new String[]{Passcodes.COLUMN_QUESTION},
                 Passcodes.COLUMN_ID + "=?",
-                new String[]{String.valueOf(1)}, null, null, null, null);
+                new String[]{String.valueOf(id)}, null, null, null, null);
 
         if (cursor != null)
             cursor.moveToFirst();
 
         // store value of passcode
-        String temp = cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_PASSCODE));
+        String temp = cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_QUESTION));
 
         // close the db connection
         cursor.close();
@@ -151,70 +179,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return temp;
     }
 
-    // method compares value entered to passcode for match
-    public boolean passcode_match(int entry){
-        // get readable database as we are not inserting anything
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.query(Passcodes.TABLE_NAME,
-                new String[]{Passcodes.COLUMN_PASSCODE},
-                Passcodes.COLUMN_ID + "=?",
-                new String[]{String.valueOf(1)}, null, null, null, null);
-
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        // store value of passcode
-        int temp = cursor.getInt(cursor.getColumnIndex(Passcodes.COLUMN_PASSCODE));
-
-        // close the db connection
-        cursor.close();
-
-        return (temp == entry);
-    }
-
-    // method compares value entered to question for match
-    public boolean question_match(int question_id, String entry){
-        // get readable database as we are not inserting anything
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.query(Passcodes.TABLE_NAME,
-                new String[]{Passcodes.COLUMN_QUESTION},
-                Passcodes.COLUMN_ID + "=?",
-                new String[]{String.valueOf(entry)}, null, null, null, null);
-
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        // store value of question
-        String temp = cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_ANSWER));
-
-        // close the db connection
-        cursor.close();
-
-        return (temp.equals(entry));
-    }
-
-    // method compares value entered to answer for match
-    public boolean answer_match(int question_id, String entry){
+    // RETURNS PASSCODE STORED IN PASSCODE COLUMN ROW 1
+    public String getAnswer(long id) {
         // get readable database as we are not inserting anything
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(Passcodes.TABLE_NAME,
                 new String[]{Passcodes.COLUMN_ANSWER},
                 Passcodes.COLUMN_ID + "=?",
-                new String[]{String.valueOf(question_id)}, null, null, null, null);
+                new String[]{String.valueOf(id)}, null, null, null, null);
 
         if (cursor != null)
             cursor.moveToFirst();
 
-        // store value of answer
+        // store value of passcode
         String temp = cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_ANSWER));
 
         // close the db connection
         cursor.close();
 
-        return (temp.equals(entry));
+        return temp;
     }
 
     // passcode setter
@@ -227,6 +211,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // updating row
         return db.update(Passcodes.TABLE_NAME, values, Passcodes.COLUMN_ID + " = ?",
                 new String[]{String.valueOf(1)});
+    }
+
+    // RETURNS PASSCODE STORED IN PASSCODE COLUMN ROW 1
+    public Boolean getIsSelected(long id) {
+        // get readable database as we are not inserting anything
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(Passcodes.TABLE_NAME,
+                new String[]{Passcodes.COLUMN_IS_SELECTED},
+                Passcodes.COLUMN_ID + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
+
+        if (cursor != null)
+            cursor.moveToFirst();
+        Boolean temp = (cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_IS_SELECTED)).equals("1"));
+        //System.out.println("FROM getIsSelected " + temp);
+        // close the db connection
+        cursor.close();
+
+        return temp;
+    }
+
+    // passcode setter
+    public int change_selected(int num, boolean entry){
+        //System.out.println("going INTo change selected... " + entry);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(Passcodes.COLUMN_IS_SELECTED, entry);
+
+        // updating row
+        return db.update(Passcodes.TABLE_NAME, values, Passcodes.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(num)});
     }
 
     // question setter

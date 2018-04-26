@@ -19,15 +19,35 @@
         android:textStyle="normal" />
 
     <EditText
-        android:id="@+id/answer"
+        android:id="@+id/edit_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:gravity="top"
-        android:hint="@string/edit"
-        android:inputType="textCapSentences|textMultiLine"
-        android:lines="4"
-        android:textColorHint="@color/colorFont"
+        android:hint="@string/edit_question"
+        android:inputType="textCapSentences"
+        android:maxLines="1"
+        android:maxLength="28"
+        android:textColorHint="@color/colorSubheading"
         android:textSize="@dimen/input" />
 
+    <EditText
+        android:id="@+id/edit_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="top"
+        android:hint="@string/edit_answer"
+        android:inputType="textCapSentences"
+        android:maxLines="1"
+        android:maxLength="25"
+        android:textColorHint="@color/colorSubheading"
+        android:textSize="@dimen/input" />
+
+    <CheckBox
+        android:id="@+id/use"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="use question" />
 </LinearLayout>

@@ -18,10 +18,16 @@
 
         <EditText
             android:id="@+id/et_phone_no"
-            android:hint="Enter Phone number"
+            android:hint="phone number"
             android:inputType="phone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccentPurple"
+            android:textSize="42sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:maxLines="1"
+            android:singleLine="true"/>
 
         <Button
             android:id="@+id/btn_dial"

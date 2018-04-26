@@ -1,8 +1,12 @@
 package com.sp18.ssu370.baseprojectapp.ui.activities;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Button enterLockDownButton;
     private TextView code;
     private DatabaseHelper db;
+    final Context context = this;
 
     public static void setOnTouchListener(OnSwipeTouchListener onTouchListener) {
         MainActivity.onTouchListener = onTouchListener;
@@ -64,8 +69,27 @@ public class MainActivity extends AppCompatActivity {
         enterMapsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MapsActivity.class));
+                if(!db.getPasscode().equals("****"))
+                    startActivity(new Intent(MainActivity.this, MapsActivity.class));
+                else{
+                    LayoutInflater li = LayoutInflater.from(context);
+                    View promptsView = li.inflate(R.layout.no_passcode_dialog, null);
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                    alertDialogBuilder.setView(promptsView);
+                    final TextView alert = (TextView) promptsView.findViewById(R.id.no_passcode);
 
+                    // set question_dialog message
+                    alertDialogBuilder
+                            .setCancelable(false)
+                            .setPositiveButton("OK",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog,int id) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                }
             }
         });
 
@@ -74,7 +98,27 @@ public class MainActivity extends AppCompatActivity {
         enterLockDownButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, PhoneActivity.class));
+                if(!db.getPasscode().equals("****"))
+                    startActivity(new Intent(MainActivity.this, PhoneActivity.class));
+                else {
+                    LayoutInflater li = LayoutInflater.from(context);
+                    View promptsView = li.inflate(R.layout.no_passcode_dialog, null);
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                    alertDialogBuilder.setView(promptsView);
+                    final TextView alert = (TextView) promptsView.findViewById(R.id.no_passcode);
+
+                    // set question_dialog message
+                    alertDialogBuilder
+                            .setCancelable(false)
+                            .setPositiveButton("OK",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog,int id) {
+                                            dialog.cancel();
+                                        }
+                            });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                }
             }
         });
 

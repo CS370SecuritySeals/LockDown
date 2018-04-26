@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity;
+
 public class PhoneActivity extends AppCompatActivity {
     private Button exitLockDownButton;
     private TelephonyManager mTelephonyManager;

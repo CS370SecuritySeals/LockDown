@@ -3,6 +3,7 @@ package com.sp18.ssu370.baseprojectapp;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -45,6 +46,7 @@ public class ExitLockdownActivity extends AppCompatActivity {
     private EditText mPasswordView;
     private DatabaseHelper db;
     private Button exitLockdownButton;
+    public int counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,22 +56,46 @@ public class ExitLockdownActivity extends AppCompatActivity {
         mEmailView = (AutoCompleteTextView) findViewById(R.id.code);
         db = new DatabaseHelper(this);
         db.getReadableDatabase();
+        counter = 0;
 
         exitLockdownButton = (Button) findViewById(R.id.passCodeSubmit);
         exitLockdownButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View mEmailView) {
-                if(passcodeMatch())
-                    changeActivity();
+                Process();
             }
         });
     }
 
-    private boolean passcodeMatch(){
+    private void Process(){
+        System.out.println(counter);
+        if(mEmailView.getText().toString().length() != 4) {
+        } else if (passcodeMatch()) {
+            counter = 0;
+            changeActivity();
+        } else if (counter == 3) {
+            counter++;
+            for (int i = 1; i < 7; i++) {
+                if (db.getIsSelected(i))
+                    Dialog(i);
+            }
+        } else if (counter == 4) {
+            System.out.println("You have failed to meet security credentials. Restart phone to exit app.");
+        } else
+                counter++;
+    }
+
+    private void Dialog(int num){
+        System.out.println("Selected question will need pop up: " + num);
+    }
+
+    private boolean passcodeMatch() {
         String password = mEmailView.getText().toString();
         String current = String.format("%04d", Integer.parseInt(db.getPasscode()));
-        if(password.equals(current))
-            return true;
+        if (password.length() != 4) {
+        } else
+            if (password.equals(current))
+                return true;
         return false;
     }
 
