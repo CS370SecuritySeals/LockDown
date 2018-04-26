@@ -7,31 +7,52 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
-import android.text.TextUtils;
-import android.net.Uri;
+
 
 public class PhoneActivity extends AppCompatActivity {
     private Button exitLockDownButton;
     private TelephonyManager mTelephonyManager;
-    //private boolean passcodeCorrect;
+    private OnSwipeTouchListener onTouchListener;
 
+    public void setOnTouchListener(OnSwipeTouchListener onTouchListener) {
+        onTouchListener = onTouchListener;
+    }
     @Override
     public void onBackPressed() {
+        startActivity(new Intent(PhoneActivity.this, ExitLockdownActivity.class));
     }
-//    @Override
-//    public void onBackPressed() {
-//        if (passcodeCorrect) {
-//            super.onBackPressed();
-//        }
+
+//    public void onHomePressed() {
+//        Intent intent = new Intent(this, DisplayMessageActivity.class);
+//        EditText editText = (EditText) findViewById(R.id.editText);
+//        String message = editText.getText().toString();
+//        intent.putExtra(EXTRA_MESSAGE, message);
+//        startActivity(intent);
 //    }
+
+    public void onHomeLongPressed() {
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        onTouchListener.onTouch(null, event);
+        return super.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_HOME)) {
+            Toast.makeText(this, "You pressed the home button!", Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +75,7 @@ public class PhoneActivity extends AppCompatActivity {
             }
         });
 
-        MainActivity.setOnTouchListener(new OnSwipeTouchListener(PhoneActivity.this) {
+        setOnTouchListener(new OnSwipeTouchListener(PhoneActivity.this) {
             public void onSwipeUp() {
                 Toast.makeText(PhoneActivity.this, "top", Toast.LENGTH_SHORT).show();
             }
@@ -80,6 +101,14 @@ public class PhoneActivity extends AppCompatActivity {
 
         });
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Intent intent = new Intent(this, ExitLockdownActivity.class);
+
+        }
+
 }
 
 

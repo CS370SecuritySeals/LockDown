@@ -5,10 +5,11 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.REORDER_TASKS" />
-
-
+    <!--package="com.example.currentplacedetailsonmap">-->
+    <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
+<!---->
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -45,11 +46,8 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyDNS_5zefo-9MU4tCc0SUp6lsNWBtnnCOk" />
 
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
         <activity
             android:name=".ChangePasswordScreen"
             android:label="@string/title_activity_change_password_screen"
@@ -60,16 +58,17 @@
         <activity
             android:name=".ExitLockdownActivity"
             android:label="@string/title_activity_exit_lockdown" />
-        <activity android:name=".PhoneActivity"/>
-
+        <activity android:name=".PhoneActivity" />
         <activity
             android:name=".UpdatePasscodeActivity"
             android:label="@string/title_activity_exit_lockdown" />
         <activity
             android:name=".QuestionActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/title_activity_edit_questions" />
-
+            android:label="@string/title_activity_edit_questions"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"/>
     </application>
 
 </manifest>

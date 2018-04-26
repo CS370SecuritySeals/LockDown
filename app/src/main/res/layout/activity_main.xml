@@ -7,14 +7,6 @@
     android:background="@color/colorBackground"
     tools:context="com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity">
 
-    <ImageView
-        android:id="@+id/triangleAccent"
-        android:layout_width="128dp"
-        android:layout_height="147dp"
-        app:srcCompat="@drawable/triangle_accent_t"
-        tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="0dp" />
-
     <TextView
         android:id="@+id/PasscodeHeader"
         android:layout_width="wrap_content"
@@ -77,8 +69,7 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/change_pc_button"
-        app:layout_constraintVertical_bias="0.466"
-        app:srcCompat="@drawable/center_lock_t" />
+        app:layout_constraintVertical_bias="0.466" />
 
     <Button
         android:id="@+id/enterLockDown"

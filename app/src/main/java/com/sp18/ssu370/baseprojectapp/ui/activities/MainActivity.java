@@ -3,19 +3,19 @@ package com.sp18.ssu370.baseprojectapp.ui.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sp18.ssu370.baseprojectapp.ChangePasswordScreen;
 import com.sp18.ssu370.baseprojectapp.MapsActivity;
+import com.sp18.ssu370.baseprojectapp.OnSwipeTouchListener;
 import com.sp18.ssu370.baseprojectapp.PhoneActivity;
 import com.sp18.ssu370.baseprojectapp.R;
 
 import sqlite.DatabaseHelper;
-import android.view.MotionEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.sp18.ssu370.baseprojectapp.OnSwipeTouchListener;
 
 public class MainActivity extends AppCompatActivity {
     private static OnSwipeTouchListener onTouchListener;
