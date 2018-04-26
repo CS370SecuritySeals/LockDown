@@ -378,7 +378,7 @@
         android:layout_height="58dp"
         android:fontFamily="monospace"
         android:onClick="@string/app_name"
-        android:text="@string/Back"
+        android:text="stringBack"
         android:textAlignment="center"
         android:textColor="@color/colorFont"
         android:textSize="20sp"
