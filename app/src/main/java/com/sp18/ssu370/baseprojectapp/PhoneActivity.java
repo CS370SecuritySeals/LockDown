@@ -76,7 +76,7 @@ public class PhoneActivity extends AppCompatActivity {
                 }
             }
         });
-/*
+
         setOnTouchListener(new OnSwipeTouchListener(PhoneActivity.this) {
             public void onSwipeUp() {
                 Toast.makeText(PhoneActivity.this, "top", Toast.LENGTH_SHORT).show();
@@ -92,7 +92,7 @@ public class PhoneActivity extends AppCompatActivity {
             }
 
         });
-*/
+
         exitLockDownButton = (Button) findViewById(R.id.exit_lockdown_button);
 
         exitLockDownButton.setOnClickListener(new View.OnClickListener() {
