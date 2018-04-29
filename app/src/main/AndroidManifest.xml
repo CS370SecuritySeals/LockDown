@@ -62,6 +62,10 @@
             android:label="@string/title_activity_exit_lockdown" />
 
         <activity
+            android:name=".FailActivity"
+            android:label="fail" />
+
+        <activity
             android:name=".EditQuestionsActivity"
             android:label="@string/title_activity_edit_questions" />
 

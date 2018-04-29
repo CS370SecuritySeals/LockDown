@@ -27,7 +27,7 @@ public class PhoneActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(PhoneActivity.this, ExitLockdownActivity.class));
+        //startActivity(new Intent(PhoneActivity.this, ExitLockdownActivity.class));
     }
 
 //    public void onHomePressed() {

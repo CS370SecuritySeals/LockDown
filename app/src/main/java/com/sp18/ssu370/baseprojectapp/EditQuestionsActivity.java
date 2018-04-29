@@ -34,37 +34,55 @@ public class EditQuestionsActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         db.getReadableDatabase();
 
-        Q = (TextView) findViewById(R.id.Q1);
-        A = (TextView) findViewById(R.id.A1);
-        A.setText(" " + db.getAnswer(1));
+        Q = findViewById(R.id.Q1);
+        A = findViewById(R.id.A1);
+        if(db.getAnswer(1) == null)
+            A.setText(" < >");
+        else
+            A.setText(" " + db.getAnswer(1));
         Q.setText(" " + db.getQuestion(1));
 
-        Q = (TextView) findViewById(R.id.Q2);
-        A = (TextView) findViewById(R.id.A2);
+        Q = findViewById(R.id.Q2);
+        A = findViewById(R.id.A2);
         Q.setText(" " + db.getQuestion(2));
-        A.setText(" " + db.getAnswer(2));
+        if(db.getAnswer(2) == null)
+            A.setText(" < >");
+        else
+            A.setText(" " + db.getAnswer(2));
 
-        Q = (TextView) findViewById(R.id.Q3);
-        A = (TextView) findViewById(R.id.A3);
+        Q = findViewById(R.id.Q3);
+        A = findViewById(R.id.A3);
         Q.setText(" " + db.getQuestion(3));
-        A.setText(" " + db.getAnswer(3));
+        if(db.getAnswer(3) == null)
+            A.setText(" < >");
+        else
+            A.setText(" " + db.getAnswer(3));
 
-        Q = (TextView) findViewById(R.id.Q4);
-        A = (TextView) findViewById(R.id.A4);
+        Q = findViewById(R.id.Q4);
+        A = findViewById(R.id.A4);
         Q.setText(" " + db.getQuestion(4));
-        A.setText(" " + db.getAnswer(4));
+        if(db.getAnswer(4) == null)
+            A.setText(" < >");
+        else
+            A.setText(" " + db.getAnswer(4));
 
-        Q = (TextView) findViewById(R.id.Q5);
-        A = (TextView) findViewById(R.id.A5);
+        Q = findViewById(R.id.Q5);
+        A = findViewById(R.id.A5);
         Q.setText(" " + db.getQuestion(5));
-        A.setText(" " + db.getAnswer(5));
+        if(db.getAnswer(5) == null)
+            A.setText(" < >");
+        else
+            A.setText(" " + db.getAnswer(5));
 
-        Q = (TextView) findViewById(R.id.Q6);
-        A = (TextView) findViewById(R.id.A6);
+        Q = findViewById(R.id.Q6);
+        A = findViewById(R.id.A6);
         Q.setText(" " + db.getQuestion(6));
-        A.setText(" " + db.getAnswer(6));
+        if(db.getAnswer(6) == null)
+            A.setText(" < >");
+        else
+            A.setText(" " + db.getAnswer(6));
 
-        E1 = (Button) findViewById(R.id.edit1);
+        E1 = findViewById(R.id.edit1);
         E1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +91,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
             }
         });
 
-        E2 = (Button) findViewById(R.id.edit2);
+        E2 = findViewById(R.id.edit2);
         E2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -82,7 +100,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
             }
         });
 
-        E3 = (Button) findViewById(R.id.edit3);
+        E3 = findViewById(R.id.edit3);
         E3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +108,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
             }
         });
 
-        E4 = (Button) findViewById(R.id.edit4);
+        E4 = findViewById(R.id.edit4);
         E4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +116,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
             }
         });
 
-        E5 = (Button) findViewById(R.id.edit5);
+        E5 = findViewById(R.id.edit5);
         E5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +124,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
             }
         });
 
-        E6 = (Button) findViewById(R.id.edit6);
+        E6 = findViewById(R.id.edit6);
         E6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,7 +132,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
             }
         });
 
-        returnHomeButton = (Button) findViewById(R.id.return_home);
+        returnHomeButton = findViewById(R.id.return_home);
         returnHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,26 +146,19 @@ public class EditQuestionsActivity extends AppCompatActivity {
         View promptsView = li.inflate(R.layout.question_dialog, null);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setView(promptsView);
-        final EditText userInput = (EditText) promptsView.findViewById(R.id.edit_question);
-        final EditText Q = (EditText)promptsView.findViewById(R.id.edit_question);
-        final EditText A = (EditText)promptsView.findViewById(R.id.edit_answer);
+        final EditText Q = promptsView.findViewById(R.id.edit_question);
+        final EditText A = promptsView.findViewById(R.id.edit_answer);
         Q.setText(db.getQuestion(num));
         A.setText(db.getAnswer(num));
-        final CheckBox use = (CheckBox) promptsView.findViewById(R.id.use);
+        final CheckBox use = promptsView.findViewById(R.id.use);
 
         use.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     use.setChecked(true);
-                    //db.change_selected(num, 1);
-                    //int rowsAffected = db.change_selected(num, true);
-                    //Log.d("IS_SELECTED", "change made: " + rowsAffected + " row changed");
                 } else {
                     use.setChecked(false);
-                    //db.change_selected(num, 0);
-                    //int rowsAffected = db.change_selected(num, false);
-                    //Log.d("IS_SELECTED", "change made: " + rowsAffected + " row changed");
                 }
             }
         });
