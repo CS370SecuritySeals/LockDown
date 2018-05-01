@@ -1,6 +1,8 @@
 package com.sp18.ssu370.baseprojectapp;
 
 import android.Manifest;
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -281,5 +283,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onBackPressed() {
         startActivity(new Intent(MapsActivity.this, ExitLockdownActivity.class));
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        ActivityManager activityManager = (ActivityManager) getApplicationContext()
+                .getSystemService(Context.ACTIVITY_SERVICE);
+
+        activityManager.moveTaskToFront(getTaskId(), 0);
     }
 }

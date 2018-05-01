@@ -1,6 +1,8 @@
 package com.sp18.ssu370.baseprojectapp;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,7 +28,17 @@ public class PhoneActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(PhoneActivity.this, ExitLockdownActivity.class));
+        //startActivity(new Intent(PhoneActivity.this, ExitLockdownActivity.class));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        ActivityManager activityManager = (ActivityManager) getApplicationContext()
+                .getSystemService(Context.ACTIVITY_SERVICE);
+
+        activityManager.moveTaskToFront(getTaskId(), 0);
     }
 
     public void onHomeLongPressed() {

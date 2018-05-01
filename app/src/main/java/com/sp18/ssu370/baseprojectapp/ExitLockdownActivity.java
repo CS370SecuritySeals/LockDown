@@ -1,14 +1,20 @@
 package com.sp18.ssu370.baseprojectapp;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.PixelFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -35,6 +41,7 @@ public class ExitLockdownActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_exit_lockdown);
+
         // Set up the login form.
         mEmailView = findViewById(R.id.code);
         db = new DatabaseHelper(this);
@@ -144,5 +151,32 @@ public class ExitLockdownActivity extends AppCompatActivity {
 
     private void hideSoftKeyboard() {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ActivityManager activityManager = (ActivityManager) getApplicationContext()
+                .getSystemService(Context.ACTIVITY_SERVICE);
+        activityManager.moveTaskToFront(getTaskId(), 0);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_HOME)) {
+            return false;
+        }
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            //Intent nextFlow = new Intent(this, AppActionActivity.class);
+            //Intent nextFlow = new Intent(this, AppActionDropDownActivity.class);
+            //startActivity(nextFlow);
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        //startActivity(new Intent(FailActivity.this, FailActivity.class));
     }
 }
