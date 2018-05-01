@@ -17,6 +17,7 @@
     <string name="tempSettingsButton">Edit security questions &#187;</string>
     <string name="exitlockdown">&#171; Exit</string>
     <string name="enterMaps">Enter Google Maps &#187;</string>
+    <string name="phoneNumber">phone number</string>
     <string name="edit">Edit</string>
     <string name="Back">&#171; Back</string>
     <string name="submit">Submit &#187;</string>
