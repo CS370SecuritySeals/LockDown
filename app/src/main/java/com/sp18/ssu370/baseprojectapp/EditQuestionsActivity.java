@@ -188,4 +188,9 @@ public class EditQuestionsActivity extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
+
+    @Override
+    public void onBackPressed() {
+        //startActivity(new Intent(FailActivity.this, FailActivity.class));
+    }
 }

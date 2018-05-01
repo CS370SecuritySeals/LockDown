@@ -54,8 +54,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ExitLockdownActivity"
-            android:label="@string/title_activity_exit_lockdown" />
-        <activity android:name=".PhoneActivity"/>
+            android:label="@string/title_activity_exit_lockdown"
+            android:theme= "@style/AppTheme.NoActionBar"/>
+        <activity android:name=".PhoneActivity"
+            android:theme= "@style/AppTheme.NoActionBar"/>
 
         <activity
             android:name=".UpdatePasscodeActivity"
@@ -63,7 +65,8 @@
 
         <activity
             android:name=".FailActivity"
-            android:label="fail" />
+            android:label="fail"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
             android:name=".EditQuestionsActivity"
@@ -71,7 +74,8 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"/>
+            android:label="@string/title_activity_maps"
+            android:theme= "@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
