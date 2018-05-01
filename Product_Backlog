@@ -42,6 +42,10 @@ Lockdown Abilities
   Override notifications
   Override change back buttons
   
+CheckMark Buttons
+  Phone Dialing
+  Enter Passcode to Set
+  Enter Passcode to leave lockdown  
   
   
 STRETCH GOALS  
@@ -53,20 +57,7 @@ Map
 Swiping
   Edit Security Questions-- left swipe back to home page
   Phone Activity-- left swipe to exit lockdown activity
-  
-CheckMark Buttons
-  Phone Dialing
-  Enter Passcode to Set
-  Enter Passcode to leave lockdown
-  
-  
-
-  
-  Design
-    buttons to swipes
-    fonts/colors
-    logo
-    background images
+ 
     
  
     
