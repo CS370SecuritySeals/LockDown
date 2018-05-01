@@ -42,7 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void addRows(SQLiteDatabase db){
+    private void addRows(SQLiteDatabase db){
         // populate it with initial 6 security questions
         ContentValues values1 = new ContentValues();
         ContentValues values2 = new ContentValues();
@@ -54,23 +54,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // passcode & answer should be empty
         // id auto-increments & doesn't need to be handled
         values1.put(Passcodes.COLUMN_QUESTION, "What was your first car?");
-        values1.put(Passcodes.COLUMN_ANSWER, "...");
-        values1.put(Passcodes.COLUMN_IS_SELECTED, true);
+        values1.put(Passcodes.COLUMN_IS_SELECTED, false);
         values1.put(Passcodes.COLUMN_PASSCODE, "****");
         values2.put(Passcodes.COLUMN_QUESTION, "Where do you vacation?");
-        values2.put(Passcodes.COLUMN_ANSWER, "...");
         values2.put(Passcodes.COLUMN_IS_SELECTED, false);
         values3.put(Passcodes.COLUMN_QUESTION, "What is your favorite food?");
-        values3.put(Passcodes.COLUMN_ANSWER, "...");
         values3.put(Passcodes.COLUMN_IS_SELECTED, false);
         values4.put(Passcodes.COLUMN_QUESTION, "What team do you root for?");
-        values4.put(Passcodes.COLUMN_ANSWER, "...");
         values4.put(Passcodes.COLUMN_IS_SELECTED, false);
         values5.put(Passcodes.COLUMN_QUESTION, "What is your spirit animal?");
-        values5.put(Passcodes.COLUMN_ANSWER, "...");
         values5.put(Passcodes.COLUMN_IS_SELECTED, false);
         values6.put(Passcodes.COLUMN_QUESTION, "What is your favorite show?");
-        values6.put(Passcodes.COLUMN_ANSWER, "...");
         values6.put(Passcodes.COLUMN_IS_SELECTED, false);
 
         // insert rows
@@ -292,6 +286,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 passcodes.add(passcode);
             } while (cursor.moveToNext());
+
+            cursor.close();
         }
 
         // close db connection

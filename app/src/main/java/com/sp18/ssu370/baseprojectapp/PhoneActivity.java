@@ -1,6 +1,7 @@
 package com.sp18.ssu370.baseprojectapp;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,7 +30,7 @@ public class PhoneActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(PhoneActivity.this, ExitLockdownActivity.class));
+        //startActivity(new Intent(PhoneActivity.this, ExitLockdownActivity.class));
     }
 
 //    public void onHomePressed() {
@@ -59,7 +62,10 @@ public class PhoneActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_phone);
+
         Button mDialButton = (Button) findViewById(R.id.btn_dial);
         final EditText mPhoneNoEt = (EditText) findViewById(R.id.et_phone_no);
 

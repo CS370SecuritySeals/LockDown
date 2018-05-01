@@ -3,9 +3,9 @@
     <string name="passcodeHeader">Your Passcode</string>
     <string name="Passcode">****</string>
     <string name="PasscodeUpdate">****</string>
-    <string name="changePasscode">&#171; Change Passcode</string>
+    <string name="changePasscode">Change Passcode &#187;</string>
     <string name="reset">&#171; Reset</string>
-    <string name="enterLockDown">Enter LockDown &#187;</string>
+    <string name="enterLockDown">Enter Phone &#187;</string>
     <string name="title_activity_maps">Map</string>
     <string name="tempDash">———— ———— ———— ————</string>
     <string name="title_activity_change_password_screen">ChangePasswordScreen</string>
@@ -14,14 +14,15 @@
     <string name="SelectAnswer">Select 3 of the following for your security questions</string>
     <string name="ReturnHome">Return Home &#187;</string>
     <string name="Select_Questions">Select 6 of the Following Questions:</string>
-    <string name="tempSettingsButton">&#171; Edit security questions</string>
-    <string name="exitlockdown">&#171; Exit LockDown</string>
+    <string name="tempSettingsButton">Edit security questions &#187;</string>
+    <string name="exitlockdown">&#171; Exit</string>
     <string name="enterMaps">Enter Google Maps &#187;</string>
     <string name="edit">Edit</string>
-    <string name="Back">Back</string>
+    <string name="Back">&#171; Back</string>
     <string name="submit">Submit &#187;</string>
     <string name="question">Q</string>
     <string name="test">test</string>
+    <string name="fail_message">You have failed to meet minimum security qualifications. Restart phone to exit app.</string>
     <string name="title_activity_edit_questions">Edit Questions</string>
     <string name="editSecurity">Edit Security &#187;</string>
 
