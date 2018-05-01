@@ -1,7 +1,6 @@
 package com.sp18.ssu370.baseprojectapp;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,9 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
-import com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity;
-
 public class PhoneActivity extends AppCompatActivity {
     private Button exitLockDownButton;
     private TelephonyManager mTelephonyManager;
@@ -30,7 +26,7 @@ public class PhoneActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        //startActivity(new Intent(PhoneActivity.this, ExitLockdownActivity.class));
+        startActivity(new Intent(PhoneActivity.this, ExitLockdownActivity.class));
     }
 
 //    public void onHomePressed() {
@@ -77,6 +73,7 @@ public class PhoneActivity extends AppCompatActivity {
                 if (!TextUtils.isEmpty(phoneNo)) {
                     String dial = "tel:" + phoneNo;
                     startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+                    hideSoftKeyboard();
                 } else {
                     Toast.makeText(PhoneActivity.this, "Enter a phone number", Toast.LENGTH_SHORT).show();
                 }
@@ -116,6 +113,10 @@ public class PhoneActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ExitLockdownActivity.class);
 
         }
+
+    private void hideSoftKeyboard() {
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
 
 }
 
