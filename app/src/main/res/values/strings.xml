@@ -23,6 +23,7 @@
     <string name="submit">Submit &#187;</string>
     <string name="question">Q</string>
     <string name="test">test</string>
+    <string name="number">0</string>
     <string name="fail_message">You have failed to meet minimum security qualifications. Restart phone to exit app.</string>
     <string name="title_activity_edit_questions">Edit Questions</string>
     <string name="editSecurity">Edit Security &#187;</string>

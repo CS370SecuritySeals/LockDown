@@ -79,23 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 if(!db.getPasscode().equals("****"))
                     startActivity(new Intent(MainActivity.this, MapsActivity.class));
                 else{
-                    LayoutInflater li = LayoutInflater.from(context);
-                    View promptsView = li.inflate(R.layout.no_passcode_dialog, null);
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                    alertDialogBuilder.setView(promptsView);
-                    final TextView alert = (TextView) promptsView.findViewById(R.id.no_passcode);
-
-                    // set question_dialog message
-                    alertDialogBuilder
-                            .setCancelable(false)
-                            .setPositiveButton("OK",
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog,int id) {
-                                            dialog.cancel();
-                                        }
-                                    });
-                    AlertDialog alertDialog = alertDialogBuilder.create();
-                    alertDialog.show();
+                    Toast.makeText(context, "Passcode must be set...", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -108,23 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 if(!db.getPasscode().equals("****"))
                     startActivity(new Intent(MainActivity.this, PhoneActivity.class));
                 else {
-                    LayoutInflater li = LayoutInflater.from(context);
-                    View promptsView = li.inflate(R.layout.no_passcode_dialog, null);
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                    alertDialogBuilder.setView(promptsView);
-                    final TextView alert = (TextView) promptsView.findViewById(R.id.no_passcode);
-
-                    // set question_dialog message
-                    alertDialogBuilder
-                            .setCancelable(false)
-                            .setPositiveButton("OK",
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog,int id) {
-                                            dialog.cancel();
-                                        }
-                            });
-                    AlertDialog alertDialog = alertDialogBuilder.create();
-                    alertDialog.show();
+                    Toast.makeText(context, "Passcode must be set...", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -136,11 +104,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSwipeLeft() {
                 Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
             }
-
         });
-
-
-
     }
 
     public boolean isServicesOK(){

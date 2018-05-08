@@ -151,6 +151,7 @@ public class EditQuestionsActivity extends AppCompatActivity {
         Q.setText(db.getQuestion(num));
         A.setText(db.getAnswer(num));
         final CheckBox use = promptsView.findViewById(R.id.use);
+        if(db.getIsSelected(num)) use.setChecked(true);
 
         use.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

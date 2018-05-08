@@ -25,11 +25,12 @@
         android:background="@android:color/transparent"
         android:gravity="top"
         android:hint="@string/edit_question"
-        android:inputType="textCapSentences"
+        android:inputType="textCapSentences|textFilter|textNoSuggestions"
         android:maxLines="1"
         android:maxLength="28"
         android:textColorHint="@color/colorSubheading"
-        android:textSize="@dimen/input" />
+        android:textSize="@dimen/input"
+        android:imeOptions="actionDone" />
 
     <EditText
         android:id="@+id/edit_answer"
@@ -38,11 +39,12 @@
         android:background="@android:color/transparent"
         android:gravity="top"
         android:hint="@string/edit_answer"
-        android:inputType="textCapSentences"
+        android:inputType="textCapSentences|textFilter|textNoSuggestions"
         android:maxLines="1"
         android:maxLength="25"
         android:textColorHint="@color/colorSubheading"
-        android:textSize="@dimen/input" />
+        android:textSize="@dimen/input"
+        android:imeOptions="actionDone" />
 
     <CheckBox
         android:id="@+id/use"
