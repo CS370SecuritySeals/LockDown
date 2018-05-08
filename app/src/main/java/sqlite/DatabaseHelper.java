@@ -58,6 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values1.put(Passcodes.COLUMN_PASSCODE, "****");
         values2.put(Passcodes.COLUMN_QUESTION, "Where do you vacation?");
         values2.put(Passcodes.COLUMN_IS_SELECTED, false);
+        values2.put(Passcodes.COLUMN_PASSCODE, "0");
         values3.put(Passcodes.COLUMN_QUESTION, "What is your favorite food?");
         values3.put(Passcodes.COLUMN_IS_SELECTED, false);
         values4.put(Passcodes.COLUMN_QUESTION, "What team do you root for?");
@@ -125,30 +126,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return temp;
     }
 
-    // RETURNS PASSCODE OBJECT WITHOUT PASSCODE COLUMN
-    public Passcodes getPasscodeEntry(long id) {
+    // RETURNS PASSCODE STORED IN PASSCODE COLUMN ROW 1
+    public String getQuestionNumber() {
         // get readable database as we are not inserting anything
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(Passcodes.TABLE_NAME,
-                new String[]{Passcodes.COLUMN_ID, Passcodes.COLUMN_QUESTION, Passcodes.COLUMN_ANSWER, Passcodes.COLUMN_IS_SELECTED},
+                new String[]{Passcodes.COLUMN_PASSCODE},
                 Passcodes.COLUMN_ID + "=?",
-                new String[]{String.valueOf(id)}, null, null, null, null);
+                new String[]{String.valueOf(2)}, null, null, null, null);
 
         if (cursor != null)
             cursor.moveToFirst();
 
-        // prepare note object
-        Passcodes p = new Passcodes(
-                cursor.getInt(cursor.getColumnIndex(Passcodes.COLUMN_ID)),
-                cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_QUESTION)),
-                cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_ANSWER)),
-                cursor.getInt(cursor.getColumnIndex(Passcodes.COLUMN_IS_SELECTED)) == 1);
+        // store value of passcode
+        String temp = cursor.getString(cursor.getColumnIndex(Passcodes.COLUMN_PASSCODE));
 
         // close the db connection
         cursor.close();
 
-        return p;
+        return temp;
     }
 
     // RETURNS PASSCODE STORED IN PASSCODE COLUMN ROW 1
@@ -205,6 +202,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // updating row
         return db.update(Passcodes.TABLE_NAME, values, Passcodes.COLUMN_ID + " = ?",
                 new String[]{String.valueOf(1)});
+    }
+
+    // passcode setter
+    public int setQuestionNumber(String entry){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(Passcodes.COLUMN_PASSCODE, entry);
+
+        // updating row
+        return db.update(Passcodes.TABLE_NAME, values, Passcodes.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(2)});
     }
 
     // RETURNS PASSCODE STORED IN PASSCODE COLUMN ROW 1

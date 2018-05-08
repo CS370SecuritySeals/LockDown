@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context="com.sp18.ssu370.baseprojectapp.ExitQuestionActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <ImageView
+        android:id="@+id/triangleAccent"
+        android:layout_width="128dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/exit_question"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/triangle_accent_t" />
+
+    <TextView
+        android:id="@+id/exit_question"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:fontFamily="monospace"
+        android:gravity="left"
+        android:text="@string/Q2"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccentPurple"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/exit_answer_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/triangleAccent" />
+
+    <AutoCompleteTextView
+        android:id="@+id/exit_answer_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="monospace"
+        android:hint="@string/edit_answer"
+        android:inputType="textCapSentences|textFilter|textNoSuggestions"
+        android:maxLength="25"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccentTeal"
+        android:textSize="24sp"
+        android:imeOptions="actionDone"
+        app:layout_constraintBottom_toTopOf="@+id/answerSubmit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exit_question" />
+
+    <Button
+        android:id="@+id/answerSubmit"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="238dp"
+        android:text="@string/submit"
+        android:textColor="@color/colorFont"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exit_answer_value" />
+
+</android.support.constraint.ConstraintLayout>
+    <!--android:fontFamily="@font/advent_pro_thin"-->

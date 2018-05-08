@@ -10,24 +10,27 @@
     <ImageView
         android:id="@+id/triangleAccent"
         android:layout_width="128dp"
-        android:layout_height="147dp"
-        app:srcCompat="@drawable/triangle_accent_t"
-        tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:layout_height="0dp"
+        android:layout_marginBottom="313dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/change_pc_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/triangle_accent_t" />
 
-    <TextView
-        android:id="@+id/PasscodeHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="312dp"
-        android:fontFamily="monospace"
-        android:text="@string/passcodeHeader"
-        android:textAlignment="center"
-        android:textColor="@color/colorSubheading"
-        android:textSize="18sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--<TextView-->
+    <!--android:id="@+id/PasscodeHeader"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="312dp"-->
+    <!--android:fontFamily="monospace"-->
+    <!--android:text="@string/passcodeHeader"-->
+    <!--android:textAlignment="center"-->
+    <!--android:textColor="@color/colorSubheading"-->
+    <!--android:textSize="18sp"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
 
     <TextView
         android:id="@+id/PasscodeDisplay"
@@ -51,6 +54,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="55dp"
         android:fontFamily="monospace"
         android:onClick="@string/app_name"
         android:text="@string/editSecurity"
@@ -61,7 +65,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/triangleAccent"
         app:layout_constraintVertical_bias="0.893" />
 
     <ImageView

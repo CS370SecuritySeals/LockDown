@@ -65,9 +65,6 @@ public class FailActivity extends AppCompatActivity {
             return true;
         }
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            //Intent nextFlow = new Intent(this, AppActionActivity.class);
-            //Intent nextFlow = new Intent(this, AppActionDropDownActivity.class);
-            //startActivity(nextFlow);
             return true;
         }
         return super.onKeyDown(keyCode, event);
