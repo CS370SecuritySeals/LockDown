@@ -65,7 +65,7 @@ Misc.
   ✔ Error message for incorrect passcode
   Entering new passcode should go back to the security page, not home page
   Change/set passcode on secutity page, not a new page
-  Maps-- auto complete search locations
+  ✔ Maps-- auto complete search locations
   Map-- search for target
   Map--soft keyboard go away
   Play around with putting triangles on bottom and image on top to make buttons more accessible
