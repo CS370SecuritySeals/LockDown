@@ -46,7 +46,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDNS_5zefo-9MU4tCc0SUp6lsNWBtnnCOk" />
+            android:value="AIzaSyA25UlE-f4QZm1vltVjXb_Eet064u5nm7I" />
 
         <activity
             android:name=".ChangePasswordScreen"
