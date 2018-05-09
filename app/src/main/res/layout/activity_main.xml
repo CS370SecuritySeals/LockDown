@@ -7,15 +7,33 @@
     android:background="@color/colorBackground"
     tools:context="com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity">
 
+    <TextView
+        android:id="@+id/passcodeHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="@string/passcodeHeader"
+        android:textAlignment="center"
+        android:textColor="@color/colorSubheading"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.536" />
+
     <ImageView
         android:id="@+id/triangleAccent"
-        android:layout_width="128dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="313dp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/change_pc_button"
+        android:layout_width="124dp"
+        android:layout_height="118dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.029999971"
         app:srcCompat="@drawable/triangle_accent_t" />
 
     <!--<TextView-->
@@ -66,13 +84,13 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/triangleAccent"
-        app:layout_constraintVertical_bias="0.893" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/centerLock"
         android:layout_width="125dp"
         android:layout_height="102dp"
-        android:layout_marginBottom="148dp"
+        android:layout_marginBottom="132dp"
         android:layout_marginEnd="108dp"
         android:layout_marginStart="108dp"
         app:layout_constraintBottom_toTopOf="@+id/enterLockDown"
